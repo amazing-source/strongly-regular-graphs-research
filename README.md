@@ -1,6 +1,6 @@
 # Strongly Regular Graphs Research
 
-Research manuscripts by **Dilan Djematene**, with their LaTeX sources, PDFs, graph data, and executable verification material.
+Research manuscripts by **Dilan Djematene** ([ORCID 0009-0009-2947-7746](https://orcid.org/0009-0009-2947-7746)), with their LaTeX sources, PDFs, graph data, and executable verification material.
 
 **Status: research manuscripts awaiting independent review.** The results below are the claims of the manuscripts. The included verification programs reproduce the public finite checks described below; some Conway computations and formal proofs are available separately from the author. These checks do not replace independent review of the proofs, novelty, or literature context. The existence of a strongly regular graph with parameters `(99,14,1,2)` remains open.
 

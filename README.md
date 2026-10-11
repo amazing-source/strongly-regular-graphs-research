@@ -4,7 +4,35 @@ Research manuscripts by **Dilan Djematene**, with their LaTeX sources, PDFs, gra
 
 **Status: research manuscripts awaiting independent review.** The results below are the claims of the manuscripts. The accompanying computations reproduce their finite checks; they do not replace independent review of the proofs, novelty, or literature context. This repository does not claim to settle the existence of a strongly regular graph with parameters `(99,14,1,2)`.
 
-## Manuscripts
+## Conway's 99-graph: the automorphism group
+
+A Conway 99-graph is a strongly regular graph with parameters `(99,14,1,2)`; its existence is open. Published work
+(Makhnev–Minakova 2004, Behbahani–Lam 2011, Crnković–Maksimović 2020, Cesarz–Woldar 2025) leaves `|Aut| ∈ {1, 2, 3}`.
+The manuscripts below exclude the remaining cases. Together they give: **a Conway 99-graph, if it exists, is asymmetric.**
+
+| Document | Claim | Method | Status | Files |
+| --- | --- | --- | --- | --- |
+| *A Conway 99-graph, if it exists, is asymmetric: statement and dependencies* | `Aut(Γ)` is trivial, assembled prime by prime from the results below and the literature | short note, no new mathematics | conditional on the order-2 manuscript | [PDF](papers/conway99_asymmetric/asymmetric.pdf) · [LaTeX](papers/conway99_asymmetric/asymmetric.tex) |
+| *A strongly regular graph with parameters (99,14,1,2) has no automorphism of order two* | no involution | first half by hand (an involution gives a 51-vector frame in one of Borcherds' 156 odd unimodular lattices of rank 24); second half computer-assisted, lattice by lattice | draft of 7 October 2026; one validation step (recertification of part of the transfers between lattices) still to be completed; not refereed | [PDF](papers/conway99_order2/order2.pdf) · [LaTeX](papers/conway99_order2/order2.tex) |
+| *Le graphe de Conway srg(99,14,1,2) n'a pas d'automorphisme d'ordre 3* (in French) | no automorphism of order 3 | by hand: discriminants of eigenvector lattices over ℤ and the Eisenstein integers | **formalised in Lean 4 / Mathlib** (no `sorry`, standard axioms, `lake comparator`); not refereed | [PDF](papers/conway99_order3/preuve_c3.pdf) · [LaTeX](papers/conway99_order3/preuve_c3.tex) |
+| *A computer-free proof that a Conway 99-graph has no automorphism of order seven* | no automorphism of order 7 (previously known only by computer, Behbahani–Lam) | by hand, completing the framework of Cesarz–Woldar | **formalised in Lean 4 / Mathlib**; not refereed | [PDF](papers/conway99_order7/order7.pdf) · [LaTeX](papers/conway99_order7/order7.tex) |
+
+The programs, records and certificates of the order-2 computation (including a 90-page supplement with the three
+computer-assisted lemmas), and the Lean formalisations of orders 3 and 7, are kept in private repositories and are
+available from the author on request.
+
+## Further results on (243,22,1,2) (October 2026)
+
+[`results/srg243_family/`](results/srg243_family) adds **two more strongly regular graphs with parameters (243,22,1,2)**:
+- Γ₃, with |Aut| = 864;
+- Γ₄, with |Aut| = 3,888.
+
+That makes four pairwise non-isomorphic graphs in total, with a standalone verifier.
+
+It also reports a rigidity phenomenon. Among the four graphs, only BvLS contains a Hoffman coclique (45 vertices). Fixing
+one such coclique with its incidences determines the remaining 198 vertices uniquely.
+
+## Other manuscripts
 
 | Paper | Main claims | Files |
 | --- | --- | --- |
@@ -94,13 +122,17 @@ python reproduction/rank7/verify_unit_propagation.py
 
 ## Building the manuscripts
 
-The supplied PDFs are the original manuscript versions. To build separate copies, install a TeX distribution with `amsart`, `amsmath`, `amssymb`, `booktabs`, and `hyperref`, then run:
+The supplied PDFs are the original manuscript versions. To build separate copies, install a TeX distribution with `amsart`, `amsmath`, `amssymb`, `booktabs`, `hyperref`, `tikz`, `cleveref` and French `babel` support, then run:
 
 ```bash
 mkdir -p build
 pdflatex -no-shell-escape -interaction=nonstopmode -halt-on-error -output-directory=build papers/srg243_second/srg243_second.tex
 pdflatex -no-shell-escape -interaction=nonstopmode -halt-on-error -output-directory=build papers/s5_2adic/s5_2adic.tex
 pdflatex -no-shell-escape -interaction=nonstopmode -halt-on-error -output-directory=build papers/rank7/rank7.tex
+pdflatex -no-shell-escape -interaction=nonstopmode -halt-on-error -output-directory=build papers/conway99_asymmetric/asymmetric.tex
+pdflatex -no-shell-escape -interaction=nonstopmode -halt-on-error -output-directory=build papers/conway99_order3/preuve_c3.tex
+pdflatex -no-shell-escape -interaction=nonstopmode -halt-on-error -output-directory=build papers/conway99_order7/order7.tex
+(cd papers/conway99_order2 && pdflatex -no-shell-escape -interaction=nonstopmode -halt-on-error -output-directory=../../build order2.tex)  # uses table156.tex
 ```
 
 Run each command twice to resolve references. The manuscripts use `\today`, so rebuilding may change the displayed date. All bibliographies are embedded in the LaTeX sources; no separate bibliography database or external figures are needed.
@@ -116,4 +148,14 @@ Additional material is limited to reproducibility dependencies:
 - `reproduction/srg243_second/`: the original triangle switching implementation and a driver that uses the published edge lists and portable dependencies.
 - `reproduction/verify_all.py`: an assertion-based runner for the documented checks.
 
-The mathematical content of the papers has not been changed. Their existing acknowledgements of assistance from Claude (Anthropic) are retained. Computational checks support the stated finite results; the general lattice arguments, switching rigidity proof, and claims of novelty remain subject to independent mathematical review. Corrections and reproducible review findings are welcome through GitHub issues.
+The mathematical content of the papers has not been changed. Their existing acknowledgements of assistance from Claude (Anthropic) are retained. For the four Conway 99-graph documents, the only changes from the author's private originals are: the author line (AI assistance is declared in a dedicated section of each text instead), links to private repositories replaced by "available on request", and, for the order-3 text, a font package so that it compiles with pdfLaTeX. Computational checks support the stated finite results; the general lattice arguments, switching rigidity proof, and claims of novelty remain subject to independent mathematical review. Corrections and reproducible review findings are welcome through GitHub issues.
+
+## Author and contact
+
+I am an undergraduate student working on these problems independently, without institutional support. I would be very
+grateful for any of the following:
+- independent review of any of these manuscripts;
+- advice on where and how to publish them;
+- mentoring or supervision.
+
+Corrections and comments are welcome through GitHub issues, or at the correspondence address given in the manuscripts.

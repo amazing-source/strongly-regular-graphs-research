@@ -1,0 +1,266 @@
+OUTREACH EMAILS — drafts for Dilan Djematene
+==========================================
+
+INSTRUCTIONS FOR THE SENDER (ChatGPT)
+- Send from Dilan's address, one email per recipient, plain text. Use links only, no attachments.
+- Look up each recipient's CURRENT address on their official institutional page. Do not guess an address.
+- Do not change the mathematical claims or their stated status. If you shorten an email, keep the "status" sentences and
+  the "help" paragraph.
+- Never send the same email twice to the same person.
+- After sending, delete THIS FILE from the repository (git rm OUTREACH_EMAILS.txt, commit, push).
+
+Public repository (all links below point into it):
+https://github.com/amazing-source/strongly-regular-graphs-research
+
+Programs, certificates and Lean formalisations are in private repositories. Every email offers access on request.
+
+
+------------------------------------------------------------------------------------------------------------------------
+1. To: Professor Andries E. Brouwer (maintainer of the strongly regular graph tables)
+Subject: srg(243,22,1,2): three further graphs; 2-adic exclusions; automorphisms of a Conway 99-graph
+------------------------------------------------------------------------------------------------------------------------
+Dear Professor Brouwer,
+
+My name is Dilan Djematene. I am writing because several of my results concern entries of your table of strongly regular
+graphs. I would be grateful for an initial independent assessment.
+
+1. (243,22,1,2). Your table lists a single graph. I have constructed three further, pairwise non-isomorphic ones.
+   - The first is the subject of a manuscript (automorphism group of order 4,320; 405 induced 3x3 grids versus 1,485 in
+     BvLS).
+   - The two others have automorphism groups of order 864 and 3,888.
+   - All four are 3-fold covers of the Brouwer–Haemers graph along a regular spread.
+   - A standalone verifier checks the parameters, the grid counts and the automorphism generators.
+
+2. A 2-adic feasibility condition from integral eigenvalue lattices. It excludes 35 parameter sets marked open in the
+   September 2026 snapshot of your table, an infinite family of negative Latin square type parameters, and pg(14,14,4).
+
+3. (99,14,1,2). Three manuscripts exclude automorphisms of order 2, 3 and 7.
+   - Order 3 and order 7 are proved by hand and formalised in Lean 4.
+   - Order 2 is partly computer-assisted, with one validation step still in progress.
+   - Combined with the literature, they give that a Conway 99-graph, if it exists, has trivial automorphism group.
+
+None of this has been refereed yet. The work was carried out with substantial assistance from AI systems, as declared in
+each manuscript; I take full responsibility for its content. That is one more reason I would value an expert's
+assessment.
+
+I am an undergraduate student working on this independently, without supervision or institutional support. Beyond any
+feedback on the mathematics, I would be very grateful for advice on how and where to publish, or for the name of someone
+who might mentor or supervise this work.
+
+Manuscripts, data and verifiers:
+- (243,22,1,2): https://github.com/amazing-source/strongly-regular-graphs-research/tree/main/results/srg243_family
+  and https://github.com/amazing-source/strongly-regular-graphs-research/tree/main/papers/srg243_second
+- 2-adic condition: https://github.com/amazing-source/strongly-regular-graphs-research/tree/main/papers/s5_2adic
+- Conway 99-graph: https://github.com/amazing-source/strongly-regular-graphs-research/tree/main/papers/conway99_asymmetric
+
+The programs and certificates behind the computer-assisted steps are in private repositories. I would gladly give you
+access if you are interested.
+
+Thank you for your time.
+
+Best regards,
+Dilan Djematene
+
+
+------------------------------------------------------------------------------------------------------------------------
+2. To: Professor Willem H. Haemers
+Subject: A 2-adic nonexistence condition for strongly regular graphs (and covers of the Brouwer–Haemers graph)
+------------------------------------------------------------------------------------------------------------------------
+Dear Professor Haemers,
+
+My name is Dilan Djematene. Given your work on eigenvalue techniques for strongly regular graphs, I would like to ask
+whether you could offer an initial independent assessment of my manuscript "A 2-adic nonexistence condition for strongly
+regular graphs."
+
+- Setting: integral eigenvalues with odd difference, under a stated 2-adic hypothesis.
+- Main step: the integral eigenvalue lattices are even with odd determinant. The argument determines their determinant
+  valuations away from the primes dividing the eigenvalue difference, then obtains a feasibility obstruction modulo 4.
+- Stated applications:
+  - 35 parameter sets marked open in the September 2026 snapshot of Brouwer's table;
+  - an infinite family of negative Latin square type parameters;
+  - nonexistence of pg(14,14,4).
+- It also recovers the known nonexistence of srg(289,54,1,12).
+
+On a related note, I have found that all four strongly regular graphs with parameters (243,22,1,2) now known to me are
+3-fold covers of the Brouwer–Haemers graph srg(81,20,1,6) along a regular spread. Two of them are new; data and a
+verifier are in the repository below.
+
+This is a research manuscript awaiting independent review, prepared with substantial assistance from AI systems as
+declared in the text; I take full responsibility for its content. I would be grateful for feedback on the proof, its
+hypotheses, and possible overlap with existing spectral or arithmetic feasibility conditions.
+
+I am an undergraduate student working independently, without supervision or institutional support. Any advice on
+publication, or the name of someone who might mentor this work, would help me a great deal.
+
+Manuscript and table-checking script:
+https://github.com/amazing-source/strongly-regular-graphs-research/tree/main/papers/s5_2adic
+The (243,22,1,2) graphs:
+https://github.com/amazing-source/strongly-regular-graphs-research/tree/main/results/srg243_family
+
+Thank you for your time.
+
+Best regards,
+Dilan Djematene
+
+
+------------------------------------------------------------------------------------------------------------------------
+3. To: Dr Ferdinand Ihringer
+Subject: New strongly regular graphs with parameters (243,22,1,2), switching and Hoffman cocliques
+------------------------------------------------------------------------------------------------------------------------
+Dear Dr Ihringer,
+
+My name is Dilan Djematene. Given your work on switching constructions and cocliques in strongly regular graphs, I would
+like to ask whether you could offer an initial independent assessment of my manuscript "A second strongly regular graph
+with parameters (243,22,1,2)", and of two further graphs found since.
+
+The manuscript:
+- starts from the Berlekamp–van Lint–Seidel graph and replaces the induced subgraph on the 180 vertices at distance two
+  from a triangle, using an alternative solution of the far-neighbourhood constraints;
+- the result has 405 induced 3x3 grids, versus 1,485 in BvLS, which establishes non-isomorphism;
+- its automorphism group has order 4,320;
+- it has 5,000,130 induced hexagons, a counterexample to Reimbayev's conjectured count.
+
+Since then:
+- Two more graphs with the same parameters, with automorphism groups of order 864 and 3,888. All four are 3-fold covers
+  of the Brouwer–Haemers graph, obtained by changing the voltages of the cover.
+- A rigidity phenomenon. Among the four graphs, only BvLS contains a Hoffman coclique (45 vertices). Fixing one such
+  coclique with its incidences determines the remaining 198 vertices uniquely.
+
+None of this has been refereed. The work was carried out with substantial assistance from AI systems, as declared in the
+manuscript; I take full responsibility for its content. I would especially appreciate feedback on the construction, its
+relationship to existing switching methods, and whether these graphs have appeared before.
+
+I am an undergraduate student working independently, without supervision or institutional support. Even a brief
+assessment, advice on publication, or a suggested reviewer or mentor would help me a great deal.
+
+Manuscript, data and verifiers:
+https://github.com/amazing-source/strongly-regular-graphs-research/tree/main/papers/srg243_second
+https://github.com/amazing-source/strongly-regular-graphs-research/tree/main/results/srg243_family
+Construction scripts:
+https://github.com/amazing-source/strongly-regular-graphs-research/tree/main/reproduction/srg243_second
+
+Thank you for your time.
+
+Best regards,
+Dilan Djematene
+
+
+------------------------------------------------------------------------------------------------------------------------
+4. To: Professor A. J. Woldar (cc: P. G. Cesarz; verify both names and addresses on the authors' pages)
+Subject: Order 7 in a Conway 99-graph: a computer-free completion of your framework
+------------------------------------------------------------------------------------------------------------------------
+Dear Professor Woldar,
+
+My name is Dilan Djematene. Your paper with P. G. Cesarz on the automorphism group of a putative Conway 99-graph
+(Algebraic Combinatorics, 2025) is the starting point of one of my manuscripts. I would be grateful for your assessment.
+
+You proved without a computer that if 7 divides |Aut| then Aut is cyclic of order 7. My manuscript "A computer-free
+proof that a Conway 99-graph has no automorphism of order seven" excludes that remaining case by hand. It starts from
+your orbit structure and double-counting identities:
+- a rational-representation argument forces the exterior orbit matrix to have zero diagonal;
+- a rank-4 Gram compression reduces the problem to twelve vectors in R^4;
+- a short case analysis rules out every configuration.
+
+The proof is also formalised in Lean 4 with Mathlib. The exclusion was previously known only through the computer
+calculations of Behbahani and Lam.
+
+Two further manuscripts exclude automorphisms of order 3 (by hand, formalised in Lean 4) and of order 2 (partly
+computer-assisted, with one validation step still in progress). Combined with the literature, including your result,
+they give that a Conway 99-graph, if it exists, is asymmetric. A short note states this and its dependencies prime by
+prime.
+
+None of these manuscripts has been refereed. They were prepared with substantial assistance from AI systems, as declared
+in each text; I take full responsibility for their content.
+
+I am an undergraduate student working independently, without supervision or institutional support. Beyond feedback on
+the mathematics, I would be very grateful for advice on how to publish these results, or for the name of someone who
+might mentor or supervise this work.
+
+Order 7: https://github.com/amazing-source/strongly-regular-graphs-research/tree/main/papers/conway99_order7
+Combined note: https://github.com/amazing-source/strongly-regular-graphs-research/tree/main/papers/conway99_asymmetric
+The Lean formalisations and programs are in private repositories; I would gladly give you access.
+
+Thank you for your time.
+
+Best regards,
+Dilan Djematene
+
+
+------------------------------------------------------------------------------------------------------------------------
+5. To: Professor Dean Crnković
+Subject: Automorphisms of a Conway 99-graph: orders 2, 3 and 7
+------------------------------------------------------------------------------------------------------------------------
+Dear Professor Crnković,
+
+My name is Dilan Djematene. Given your work on strongly regular graphs with prescribed automorphism groups, including
+your paper with M. Maksimović on the composite orders for (99,14,1,2), I would be grateful for an initial
+independent assessment of three manuscripts on the automorphism group of a Conway 99-graph.
+
+- Order 3, by hand and formalised in Lean 4. An automorphism of order 3 forces two lattices of eigenvectors to have
+  determinants congruent modulo 3, and they are not. The argument works over Z and the Eisenstein integers.
+- Order 7, by hand and formalised in Lean 4. This completes the computer-free framework of Cesarz and Woldar.
+- Order 2, partly computer-assisted.
+  - By hand: an involution yields a 51-vector frame in one of Borcherds' 156 odd unimodular lattices of rank 24 without
+    vectors of norm 1.
+  - By computer: each of the 156 lattices is excluded.
+  - One validation step is still in progress.
+
+Combined with the literature, these give that a Conway 99-graph, if it exists, is asymmetric. In particular, the results
+of your paper on orders 6 and 9 are no longer needed for that conclusion. A short note lists the dependencies prime by
+prime.
+
+None of these manuscripts has been refereed. They were prepared with substantial assistance from AI systems, as declared
+in each text; I take full responsibility for their content.
+
+I am an undergraduate student working independently, without supervision or institutional support. Even a brief
+assessment, advice on publication, or a suggested reviewer or mentor would help me a great deal.
+
+Combined note: https://github.com/amazing-source/strongly-regular-graphs-research/tree/main/papers/conway99_asymmetric
+Order 2: https://github.com/amazing-source/strongly-regular-graphs-research/tree/main/papers/conway99_order2
+Order 3 (in French): https://github.com/amazing-source/strongly-regular-graphs-research/tree/main/papers/conway99_order3
+Order 7: https://github.com/amazing-source/strongly-regular-graphs-research/tree/main/papers/conway99_order7
+Programs, certificates and Lean formalisations are in private repositories; I would gladly give you access.
+
+Thank you for your time.
+
+Best regards,
+Dilan Djematene
+
+
+------------------------------------------------------------------------------------------------------------------------
+6. TEMPLATE (in French) — for a combinatorics or graph-theory professor in France (supervision, internship, arXiv
+   endorsement). Fill in [NAME] and [LAB]. Suggested labs: LaBRI (Bordeaux), IRIF (Paris), LIRMM (Montpellier),
+   G-SCOP (Grenoble). Choose someone whose page lists graph theory, algebraic combinatorics or designs.
+Subject: Étudiant en licence — résultats sur le graphe de Conway (99,14,1,2) : demande de conseil et d'encadrement
+------------------------------------------------------------------------------------------------------------------------
+Bonjour Professeur [NAME],
+
+Je m'appelle Dilan Djematene. Je suis étudiant en licence et je travaille seul, sans encadrement, sur les graphes
+fortement réguliers, en particulier sur le problème du graphe de Conway (99,14,1,2), qui est ouvert. Je me permets de
+vous écrire car vos travaux au [LAB] portent sur ce domaine.
+
+Mes principaux résultats, rédigés mais pas encore relus par un expert :
+- un graphe de Conway, s'il existe, n'a aucun automorphisme non trivial : exclusion des ordres 2, 3 et 7 ;
+  - les ordres 3 et 7 par des preuves à la main, formalisées en Lean 4 ;
+  - l'ordre 2 en partie assisté par ordinateur ;
+- trois nouveaux graphes fortement réguliers de paramètres (243,22,1,2), alors que la table de Brouwer n'en recense
+  qu'un ;
+- une condition 2-adique de non-existence qui exclut 35 jeux de paramètres encore ouverts dans cette table.
+
+Ce travail a été mené avec une aide importante de systèmes d'IA, déclarée dans chaque manuscrit. J'en assume l'entière
+responsabilité, et c'est justement pourquoi le regard d'un spécialiste me serait précieux.
+
+Je cherche quelqu'un qui accepterait :
+- de jeter un œil à ces résultats ;
+- de me conseiller sur la manière de les publier (j'aurais notamment besoin d'un parrainage pour déposer sur arXiv) ;
+- éventuellement de m'encadrer, par exemple dans le cadre d'un stage.
+
+Tout se trouve ici, avec des vérificateurs :
+https://github.com/amazing-source/strongly-regular-graphs-research
+
+Les programmes, certificats et formalisations Lean sont dans des dépôts privés, auxquels je peux vous donner accès.
+
+Je vous remercie de votre temps.
+
+Bien cordialement,
+Dilan Djematene

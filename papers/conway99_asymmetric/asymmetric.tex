@@ -1,0 +1,173 @@
+% Note accompanying main.tex: the asymmetry statement and what each of its ingredients rests on. Written 2026-10-07.
+% It proves nothing new: it assembles. Every status line below is to be kept true when an ingredient changes.
+% Sources read for this note (read, not rebuilt): conway99-c3-experimental (README.md, c3formal/README.md,
+% c3formal/Challenge.lean, pdf/preuve_c3.tex) and conway-C7 (README.md, lean/Challenge.lean, tex/order7.tex);
+% CI runs listed with `gh run list` on 2026-10-07.
+% Author: Dilan Djematene alone (his instruction of 07/10); AI assistance in the Acknowledgements, no model named.
+% The links are printed (his instruction); the repositories are private since 07/10 and must be opened before circulation.
+% TODO: the statements attributed to [MM04],
+% [Mak10], [B09], [BL11] follow the literature section of the order-3 manuscript and were not re-read in the papers.
+\documentclass[11pt]{amsart}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage[margin=1.15in]{geometry}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\G}{\Gamma}
+
+\title[A Conway 99-graph is asymmetric]{A Conway $99$-graph, if it exists, is asymmetric:\\ statement and dependencies}
+\author{Dilan Djematene}
+\date{Draft of 7 October 2026}
+
+\begin{document}
+
+\begin{abstract}
+A Conway $99$-graph is a strongly regular graph with parameters $(99,14,1,2)$; whether one exists is open. Assembling
+published results with three recent manuscripts, which exclude automorphisms of order $2$, $3$ and $7$, one obtains that
+such a graph has no nontrivial automorphism. This note states that consequence and lists, prime by prime, the result it
+uses, the nature of its proof (by hand, by computer, formalised or not) and its status. It contains no new mathematics. The statement is conditional on these ingredients as they stand; in particular the
+manuscript on order $2$ has one validation of its computations still to be completed.
+\end{abstract}
+
+\maketitle
+
+\section{Statement}
+
+Let $\G$ be a strongly regular graph with parameters $(99,14,1,2)$ and $G=\mathrm{Aut}(\G)$.
+
+\begin{theorem}\label{thm:asym}
+Assume the results \textup{(A)}--\textup{(E)} of Section~\ref{sec:ing}. Then $G$ is trivial: a strongly regular graph with
+parameters $(99,14,1,2)$, if it exists, is asymmetric.
+\end{theorem}
+
+\begin{proof}
+If $G\neq1$, it has an element of prime order $p$ (Cauchy). By (A), $p\in\{2,3,7,11\}$. These four primes are excluded by
+(B), (C), (D) and (E) respectively.
+\end{proof}
+
+\section{The ingredients}\label{sec:ing}
+
+\begin{enumerate}[label=\textup{(\Alph*)},leftmargin=2.4em]
+\item \emph{$|G|$ divides $2\cdot3^3\cdot7\cdot11$.} Makhnev and Minakova \cite{MM04}, by character theory. Published;
+no computer.
+\item \emph{No automorphism of order $2$.} The paper \cite{C2}. The first half (an involution gives a frame of $51$
+vectors in one of the $156$ odd unimodular lattices of rank $24$ without vectors of norm $1$) is proved by hand. The
+second half (no such frame in any of the $156$ lattices) is computer-assisted, and verified as described in Section~9 of \cite{C2}; in the present draft of \cite{C2} one
+validation, the recertification of a part of the transfers between lattices, remains to be completed. Not refereed; not
+formalised.
+\item \emph{No automorphism of order $3$.} The manuscript \cite{D3}: linear algebra over $\Z$ and the Eisenstein integers,
+without computer. An automorphism of order $3$ has $0$ or $3$ fixed points (a count that reproves a result of \cite{MM04});
+in both cases two lattices of eigenvectors must have determinants congruent modulo $3$, and they are not. Formalised
+in Lean~4 with Mathlib (Appendix~\ref{app:lean}); the formalisation was read, not rebuilt, for this note.  Not refereed. Independently, the case of an automorphism of order $3$ with fixed points
+is excluded by computer in \cite{B09,BL11}.
+\item \emph{No automorphism of order $7$.} Behbahani and Lam \cite{B09,BL11}, by a computer enumeration of orbit matrices;
+published. Without a computer the case was open: Cesarz and Woldar \cite{CW25} prove that $G\cong\Z_7$ if $7$ divides $|G|$
+(published), which does not exclude an automorphism of order $7$. The manuscript \cite{D7} excludes it by hand, starting from the orbit structure and the counting identities of \cite{CW25}; it is formalised in Lean~4 with Mathlib
+(Appendix~\ref{app:lean}; read, not rebuilt, for this note).  Not refereed.
+\item \emph{No automorphism of order $11$.} Behbahani and Lam \cite{B09,BL11}, by computer; published. A report of the
+MIT PRIMES programme \cite{LM14} gives an elementary argument, which was not verified for this note.
+\end{enumerate}
+
+\begin{table}[ht]
+\centering\footnotesize
+\begin{tabular}{lllll}
+\toprule
+prime & excluded by & method & formalised & status\\
+\midrule
+$p\ne2,3,7,11$ & \cite{MM04} & characters, by hand & no & published\\
+$2$ & \cite{C2} & by hand, then computer-assisted & no & manuscript\\
+$3$ & \cite{D3} & by hand & Lean 4 & manuscript\\
+$7$ & \cite{BL11} & computer & no & published\\
+    & \cite{D7}, using \cite{CW25} & by hand & Lean 4 & manuscript\\
+$11$ & \cite{BL11} & computer & no & published\\
+\bottomrule
+\end{tabular}
+\caption{What Theorem~\ref{thm:asym} uses.}
+\end{table}
+
+\section{Remarks}
+
+\begin{remark}[What is known without any computer]
+From \cite{MM04}, \cite{CW25}, \cite{D3} and \cite{D7}: $|G|$ divides $2\cdot11$, and if $|G|$ is even it divides $6$
+\cite{CW25}; hence $|G|\in\{1,2,11\}$. The two remaining values are excluded by the computations of \cite{BL11} (order $11$)
+and of \cite{C2} (order $2$).
+\end{remark}
+
+\begin{remark}[Before these manuscripts]
+The published results \cite{MM04,Mak10,B09,BL11,CM20,CW25} leave $|G|\in\{1,2,3\}$, the open cases being an involution and a
+fixed-point-free automorphism of order $3$. The manuscript \cite{D3} removes $3$ and \cite{C2} removes $2$; the results of
+\cite{CM20} on the orders $6$ and $9$ are then no longer needed.
+\end{remark}
+
+\begin{remark}[Formalisation]
+Theorem~\ref{thm:asym} itself is not formalised: \textup{(A)}, \textup{(B)} and \textup{(E)} are admitted. A formal
+statement ``the automorphism group is trivial'' would need \textup{(B)} at least as a named hypothesis.
+\end{remark}
+
+\begin{remark}[Consequence for searches]
+Every search for a Conway $99$-graph that prescribes a nontrivial automorphism is bound to fail: a proof of existence or of
+nonexistence has to deal with a graph without symmetry.
+\end{remark}
+
+\appendix
+\section{The formal statements}\label{app:lean}
+
+\emph{Order $3$.} Formalised in
+Lean~4 with Mathlib: the statement file \texttt{Challenge.lean} imports only Mathlib and contains
+\begin{quote}\footnotesize
+\texttt{theorem srg99\_no\_orderOf\_three \{V : Type*\} [Fintype V] (G : SimpleGraph V)}\\
+\texttt{\ \ \ \ [DecidableRel G.Adj] (hG : G.IsSRGWith 99 14 1 2) ($\sigma$ : G $\simeq$g G) :}\\
+\texttt{\ \ \ \ orderOf $\sigma$ $\neq$ 3}
+\end{quote}
+(namespace \texttt{Conway99}; Lean \texttt{v4.35.0-rc2}). According to the repository, the proofs use no \texttt{sorry} and
+only the axioms \texttt{propext}, \texttt{Classical.choice}, \texttt{Quot.sound}, and \texttt{lake comparator} checks that
+the proved statements are those of the statement file; its verification workflow (clean rebuild, comparator, and five
+further checkers) reports success on 23 September 2026, at commit \texttt{874903ff}, and the three later commits change no
+Lean file. For this note the statement file and the description were read; the formalisation was not rebuilt.
+
+\emph{Order $7$.} \cite{D7} is formalised in Lean~4 with Mathlib
+(\texttt{theorem srg99\_no\_orderOf\_seven}, same form as above with $7$; no \texttt{sorry}, the same three axioms,
+\texttt{lake comparator}; verification workflow successful on 2 October 2026 at commit \texttt{8c6ce690}, no Lean file
+changed since; read, not rebuilt, for this note).
+
+\section*{Acknowledgements}
+This work was carried out with the assistance of AI systems (large language models), which were used to develop the
+arguments, to write and check the programs, and to draft and cross-check the texts. The author directed the work and takes
+full responsibility for its content.
+
+\begin{thebibliography}{99}
+\bibitem[B09]{B09} M.~Behbahani, \emph{On strongly regular graphs}, Ph.D. thesis, Concordia University, Montr\'eal, 2009.
+\bibitem[BL11]{BL11} M.~Behbahani and C.~Lam, \emph{Strongly regular graphs with non-trivial automorphisms}, Discrete Math.
+\textbf{311} (2011), no.~2--3, 132--144.
+\bibitem[C2]{C2} D.~Djematene, \emph{A strongly regular graph with parameters $(99,14,1,2)$
+has no automorphism of order two}, manuscript and supplement, October 2026,
+\url{https://github.com/amazing-source/strongly-regular-graphs-research/tree/main/papers/conway99_order2}; programs, records and certificates available from the author on request.
+\bibitem[CM20]{CM20} D.~Crnkovi\'c and M.~Maksimovi\'c, \emph{Construction of strongly regular graphs having an automorphism
+group of composite order}, Contrib. Discrete Math. \textbf{15} (2020), no.~1, 22--41.
+\bibitem[CW25]{CW25} P.~G.~Cesarz and A.~J.~Woldar, \emph{On the automorphism group of a putative Conway 99-graph}, Algebr.
+Comb. \textbf{8} (2025), no.~2, 379--398.
+\bibitem[D3]{D3} D.~Djematene, \emph{Le graphe de Conway $\mathrm{srg}(99,14,1,2)$ n'a pas
+d'automorphisme d'ordre $3$: une obstruction par les discriminants}, manuscript with a formalisation in Lean~4, September
+2026, \url{https://github.com/amazing-source/strongly-regular-graphs-research/tree/main/papers/conway99_order3}; Lean formalisation available from the author on request.
+\bibitem[D7]{D7} D.~Djematene, \emph{A computer-free proof that a Conway $99$-graph has no
+automorphism of order seven}, manuscript with a formalisation in Lean~4, October 2026,
+\url{https://github.com/amazing-source/strongly-regular-graphs-research/tree/main/papers/conway99_order7}; Lean formalisation available from the author on request.
+\bibitem[LM14]{LM14} S.~Lou and M.~Murin, \emph{On the strongly regular graph of parameters $(99,14,1,2)$}, MIT PRIMES
+report, 2014.
+\bibitem[Mak10]{Mak10} A.~A.~Makhnev, \emph{On automorphisms of distance-regular graphs}, J. Math. Sci. \textbf{166} (2010),
+no.~6, 733--742.
+\bibitem[MM04]{MM04} A.~A.~Makhnev and I.~M.~Minakova, \emph{On automorphisms of strongly regular graphs with parameters
+$\lambda=1$, $\mu=2$}, Diskret. Mat. \textbf{16} (2004), no.~1, 95--104; English transl.: Discrete Math. Appl. \textbf{14}
+(2004), no.~2, 201--210.
+\end{thebibliography}
+
+\end{document}

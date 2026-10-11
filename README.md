@@ -2,7 +2,7 @@
 
 Research manuscripts by **Dilan Djematene**, with their LaTeX sources, PDFs, graph data, and executable verification material.
 
-**Status: research manuscripts awaiting independent review.** The results below are the claims of the manuscripts. The accompanying computations reproduce their finite checks; they do not replace independent review of the proofs, novelty, or literature context. This repository does not claim to settle the existence of a strongly regular graph with parameters `(99,14,1,2)`.
+**Status: research manuscripts awaiting independent review.** The results below are the claims of the manuscripts. The included verification programs reproduce the public finite checks described below; some Conway computations and formal proofs are available separately from the author. These checks do not replace independent review of the proofs, novelty, or literature context. The existence of a strongly regular graph with parameters `(99,14,1,2)` remains open.
 
 ## Conway's 99-graph: the automorphism group
 
@@ -12,8 +12,8 @@ The manuscripts below exclude the remaining cases. Together they give: **a Conwa
 
 | Document | Claim | Method | Status | Files |
 | --- | --- | --- | --- | --- |
-| *A Conway 99-graph, if it exists, is asymmetric: statement and dependencies* | `Aut(Γ)` is trivial, assembled prime by prime from the results below and the literature | short note, no new mathematics | conditional on the order-2 manuscript | [PDF](papers/conway99_asymmetric/asymmetric.pdf) · [LaTeX](papers/conway99_asymmetric/asymmetric.tex) |
-| *A strongly regular graph with parameters (99,14,1,2) has no automorphism of order two* | no involution | first half by hand (an involution gives a 51-vector frame in one of Borcherds' 156 odd unimodular lattices of rank 24); second half computer-assisted, lattice by lattice | draft of 7 October 2026; one validation step (recertification of part of the transfers between lattices) still to be completed; not refereed | [PDF](papers/conway99_order2/order2.pdf) · [LaTeX](papers/conway99_order2/order2.tex) |
+| *A Conway 99-graph, if it exists, is asymmetric: statement and dependencies* | `Aut(Γ)` is trivial, assembled prime by prime from the results below and the literature | short note, no new mathematics | assembled result; awaiting independent review; see the C2 version note below | [PDF](papers/conway99_asymmetric/asymmetric.pdf) · [LaTeX](papers/conway99_asymmetric/asymmetric.tex) |
+| *A strongly regular graph with parameters (99,14,1,2) has no automorphism of order two* | no involution | first half by hand (an involution gives a 51-vector frame in one of Borcherds' 156 odd unimodular lattices of rank 24); second half computer-assisted, lattice by lattice | computer-assisted proof; the author reports the transfer check completed in the 11 October 2026 status update; not refereed | [PDF](papers/conway99_order2/order2.pdf) · [LaTeX](papers/conway99_order2/order2.tex) |
 | *Le graphe de Conway srg(99,14,1,2) n'a pas d'automorphisme d'ordre 3* (in French) | no automorphism of order 3 | by hand: discriminants of eigenvector lattices over ℤ and the Eisenstein integers | **formalised in Lean 4 / Mathlib** (no `sorry`, standard axioms, `lake comparator`); not refereed | [PDF](papers/conway99_order3/preuve_c3.pdf) · [LaTeX](papers/conway99_order3/preuve_c3.tex) |
 | *A computer-free proof that a Conway 99-graph has no automorphism of order seven* | no automorphism of order 7 (previously known only by computer, Behbahani–Lam) | by hand, completing the framework of Cesarz–Woldar | **formalised in Lean 4 / Mathlib**; not refereed | [PDF](papers/conway99_order7/order7.pdf) · [LaTeX](papers/conway99_order7/order7.tex) |
 
@@ -21,16 +21,27 @@ The programs, records and certificates of the order-2 computation (including a 9
 computer-assisted lemmas), and the Lean formalisations of orders 3 and 7, are kept in private repositories and are
 available from the author on request.
 
+**C2 version note (11 October 2026).** The author confirms that the transfer-pair check has been completed.
+The supplied order-2 manuscript and combined note retain their earlier version wording about pending validation;
+their mathematical text and PDFs have been preserved unchanged. Reviewers should request the latest check records
+alongside these manuscripts. This README records the author's updated status, rather than a new independent audit
+of that computation.
+
 ## Further results on (243,22,1,2) (October 2026)
 
 [`results/srg243_family/`](results/srg243_family) adds **two more strongly regular graphs with parameters (243,22,1,2)**:
 - Γ₃, with |Aut| = 864;
 - Γ₄, with |Aut| = 3,888.
 
-That makes four pairwise non-isomorphic graphs in total, with a standalone verifier.
+The four supplied graphs are pairwise non-isomorphic. A standalone verifier checks their parameters and distinct
+grid counts, the supplied generators, and one BvLS Hoffman coclique. Its `--full` option also checks full automorphism
+group orders, vertex orbits, and the supplied graph6 files.
 
-It also reports a rigidity phenomenon. Among the four graphs, only BvLS contains a Hoffman coclique (45 vertices). Fixing
-one such coclique with its incidences determines the remaining 198 vertices uniquely.
+Separate computational results report that, among these four graphs, only BvLS contains a Hoffman coclique (45
+vertices), and that one fixed BvLS coclique and its full incidence design determine the remaining 198 vertices uniquely.
+The programs and records for these two exhaustive computations are available from the author on request; they are
+outside the public verification suite. The reconstruction statement concerns the supplied fixed design, rather than
+a classification of all possible Hoffman coclique designs.
 
 ## Other manuscripts
 
@@ -89,15 +100,26 @@ Run the main verification suite:
 python reproduction/verify_all.py
 ```
 
-It checks the supplied edge lists, both SRG and grid verifiers, the historical table and its agreement with the manuscript's list, all star ranks, the 32 unit-propagation refutations, and both hexagon counts. It exits with an error if an expected check fails. Compiled executables are placed in a temporary directory.
+It checks the four supplied SRG edge lists and grid counts, the family generators and BvLS coclique witness, the historical table and its agreement with the manuscript's list, all star ranks, the 32 unit-propagation refutations, and both original hexagon counts. It exits with an error if an expected check fails. Compiled executables are placed in a temporary directory.
 
-To additionally check graph6 agreement, both automorphism groups, line-pair counts, the reconstruction of the new graph from all 180 row enumerations, and one representative of each triangle switching type:
+To additionally check graph6 agreement, all four automorphism groups and vertex orbits, line-pair counts for the original two graphs, the reconstruction of the second graph from all 180 row enumerations, and one representative of each triangle switching type:
 
 ```bash
 python reproduction/verify_all.py --full
 ```
 
 The full run performs exhaustive CP-SAT enumerations and takes longer. The switching-table computation, like the manuscript's table, tests one triangle representative of each listed type. Automorphism orders are computed with nauty through `pynauty`; the publication driver does not require a separate nauty command-line installation.
+
+The family checks can also be run separately:
+
+```bash
+python results/srg243_family/verify_family.py
+python results/srg243_family/verify_family.py --full
+```
+
+The default family check needs only the Python standard library. The extended check uses the pinned NetworkX,
+pynauty and SymPy dependencies. Neither command checks the Conway C2 computation or Lean proofs, the cover-search
+classification, the absence of Hoffman cocliques in the other three graphs, or the unique-completion computation.
 
 ### Original verification commands
 
@@ -139,7 +161,11 @@ Run each command twice to resolve references. The manuscripts use `\today`, so r
 
 ## Contents and provenance
 
-The three paper directories contain all their original files. [PROVENANCE.json](PROVENANCE.json) records their Git blob hashes and the pinned source snapshot so byte-level integrity can be checked. The repository starts with its own publication history.
+The original three paper directories (`srg243_second`, `s5_2adic`, `rank7`) contain all their original files.
+[PROVENANCE.json](PROVENANCE.json) records their Git blob hashes and the pinned source snapshot so byte-level integrity
+can be checked. The Conway manuscripts and graph-family data were added in the subsequent
+[11 October publication commit](https://github.com/amazing-source/strongly-regular-graphs-research/commit/6711f1802a8dbe24c268ae6a7201967142735e56).
+The repository starts with its own publication history.
 
 Additional material is limited to reproducibility dependencies:
 
@@ -152,7 +178,7 @@ The mathematical content of the papers has not been changed. Their existing ackn
 
 ## Author and contact
 
-I am an undergraduate student working on these problems independently, without institutional support. I would be very
+I pursue this research independently. I would be very
 grateful for any of the following:
 - independent review of any of these manuscripts;
 - advice on where and how to publish them;

@@ -27,6 +27,10 @@ def main():
                         help="also enumerate the construction and switching table with CP-SAT")
     args = parser.parse_args()
     py = sys.executable
+    family_args = [py, "results/srg243_family/verify_family.py"]
+    if args.full:
+        family_args.append("--full")
+    run(family_args)
     anc = ROOT / "papers/srg243_second/anc"
     for name, distribution, total in [
         ("srg243_new.edges", "{13: 180, 19: 60, 55: 3}", 405),

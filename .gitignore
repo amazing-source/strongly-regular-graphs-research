@@ -1,0 +1,11 @@
+__pycache__/
+*.py[cod]
+.venv/
+build/
+*.aux
+*.log
+*.out
+*.toc
+*.synctex.gz
+*.npy
+*.pkl

@@ -1,0 +1,205 @@
+{
+  "source": {
+    "repository": "amazing-source/conway99-c1",
+    "branch": "claude/v7-simultaneous",
+    "commit": "24dae2b8eb3b80ad4f06e66493e9c5f773ff3f5a"
+  },
+  "originalPaperFiles": [
+    {
+      "path": "papers/rank7/rank7.pdf",
+      "gitBlobSha": "15048d21691aba1fa2b3b9738ff2cfcbbd6d5594",
+      "size": 287739
+    },
+    {
+      "path": "papers/rank7/rank7.tex",
+      "gitBlobSha": "dd280027a7bbc793dedceb68bba5e8101e8cc4e5",
+      "size": 15760
+    },
+    {
+      "path": "papers/rank7/verify_rank7.py",
+      "gitBlobSha": "d7464aa9eb94d7ad3fd76d55a58d705f7a62954e",
+      "size": 4170
+    },
+    {
+      "path": "papers/s5_2adic/s5_2adic.pdf",
+      "gitBlobSha": "0c44227f41732d62de3de924a147f57b0bbee580",
+      "size": 290914
+    },
+    {
+      "path": "papers/s5_2adic/s5_2adic.tex",
+      "gitBlobSha": "588f80dff708e154a583c9b230b562f0769f425e",
+      "size": 12929
+    },
+    {
+      "path": "papers/s5_2adic/verify_s5.py",
+      "gitBlobSha": "d6275deff72ba4bdabeecbd15299d5e8943f6603",
+      "size": 3897
+    },
+    {
+      "path": "papers/srg243_second/anc/bvls243.edges",
+      "gitBlobSha": "cfc398cea8d6d75905f1db06f264607abd9c2b68",
+      "size": 18964
+    },
+    {
+      "path": "papers/srg243_second/anc/hexagons.c",
+      "gitBlobSha": "392b0398916e2cbc7aa2c65bb588238eb44521da",
+      "size": 1871
+    },
+    {
+      "path": "papers/srg243_second/anc/srg243_new.edges",
+      "gitBlobSha": "f5c2f546c61f0291dcdc709bb1767846c8a3d4fa",
+      "size": 18964
+    },
+    {
+      "path": "papers/srg243_second/anc/srg243_new.g6",
+      "gitBlobSha": "04ea7016738f5fb9d9b4a68ebdde49b62421dcd7",
+      "size": 4906
+    },
+    {
+      "path": "papers/srg243_second/anc/verify_srg243.py",
+      "gitBlobSha": "b874e3eb624844aa3fe2282cb090a29fb4fbe243",
+      "size": 1636
+    },
+    {
+      "path": "papers/srg243_second/srg243_second.pdf",
+      "gitBlobSha": "c4ba78e2c08aa9958bd9515d2edbfc16ab1a217e",
+      "size": 250404
+    },
+    {
+      "path": "papers/srg243_second/srg243_second.tex",
+      "gitBlobSha": "fa5dbdb63e185b25a644284667cb8340c75be787",
+      "size": 11665
+    }
+  ],
+  "additionalSourceScripts": [
+    {
+      "sourcePath": "code/kbound_star.py",
+      "publishedPath": "reproduction/rank7/kbound_star.py",
+      "gitBlobSha": "d08f3647906d9d1bc1aeb8a762bde40ed3db69fb"
+    },
+    {
+      "sourcePath": "code/kbound_exact.py",
+      "publishedPath": "reproduction/rank7/kbound_exact.py",
+      "gitBlobSha": "b85efd32a0dc0a35017cd16cd31553c20770670b"
+    },
+    {
+      "sourcePath": "code/omega/switch243.py",
+      "publishedPath": "reproduction/srg243_second/switch243.py",
+      "gitBlobSha": "14cd5fe9e1a787f3dff22db8d0432923eacf5e54"
+    }
+  ],
+  "historicalTable": {
+    "origin": "https://aeb.win.tue.nl/graphs/srg/srgtab.html",
+    "snapshotDate": "2026-09-26",
+    "sourceRepository": "amazing-source/conway99-structures-lab",
+    "sourceTree": "3e9690b73955a781e0bf64baef36e5f29ac4dc39",
+    "files": [
+      {
+        "path": "data/brouwer/srgtab1-50.html",
+        "gitBlobSha": "be7687063dc34b3843f4a3a3ca6ce23385e0064e"
+      },
+      {
+        "path": "data/brouwer/srgtab1001-1050.html",
+        "gitBlobSha": "68df49f8b66795a8be47857ac6cb34b14c6bb6ea"
+      },
+      {
+        "path": "data/brouwer/srgtab101-150.html",
+        "gitBlobSha": "dc9e7bec3e917ab44f2cd5164b348a672bd49aa1"
+      },
+      {
+        "path": "data/brouwer/srgtab1051-1100.html",
+        "gitBlobSha": "8f44b09b160aca37622a94d09e9e8f348f16fadd"
+      },
+      {
+        "path": "data/brouwer/srgtab1101-1150.html",
+        "gitBlobSha": "a9b6fda8e980db5d6734e3a6d6d49f22fc1f5e33"
+      },
+      {
+        "path": "data/brouwer/srgtab1151-1200.html",
+        "gitBlobSha": "fa332119eae260b39d28b7bdb50216e4bb13298c"
+      },
+      {
+        "path": "data/brouwer/srgtab1201-1250.html",
+        "gitBlobSha": "ea092af165263a4e34df5ed37d8bc0f73e7dd186"
+      },
+      {
+        "path": "data/brouwer/srgtab1251-1300.html",
+        "gitBlobSha": "3ad0698b34e529769a8dde1aa24cf8f6762c5b33"
+      },
+      {
+        "path": "data/brouwer/srgtab151-200.html",
+        "gitBlobSha": "5d8c29575f7d3cd27d2ad211f9ebfc33d36c4506"
+      },
+      {
+        "path": "data/brouwer/srgtab201-250.html",
+        "gitBlobSha": "ed8188ddd93824fb35e8d6652e39790f6cc9e386"
+      },
+      {
+        "path": "data/brouwer/srgtab251-300.html",
+        "gitBlobSha": "d84ed747cb96b7f8e077ae02acefac43949574fa"
+      },
+      {
+        "path": "data/brouwer/srgtab301-350.html",
+        "gitBlobSha": "ef0130be991542cf07822e2f2973e38dc8dd1766"
+      },
+      {
+        "path": "data/brouwer/srgtab351-400.html",
+        "gitBlobSha": "80e6f9da7c5343f11bdc2853ebda899446069ca3"
+      },
+      {
+        "path": "data/brouwer/srgtab401-450.html",
+        "gitBlobSha": "f4e97d55d045a3ae4d676e35a92f2f514b4aaa83"
+      },
+      {
+        "path": "data/brouwer/srgtab451-500.html",
+        "gitBlobSha": "7613d4d9267be2e1d6c29ab1f88751fb9a4b30d6"
+      },
+      {
+        "path": "data/brouwer/srgtab501-550.html",
+        "gitBlobSha": "c3541b6b6fe1fe3d613e096671abb60d5d142890"
+      },
+      {
+        "path": "data/brouwer/srgtab51-100.html",
+        "gitBlobSha": "27d513299192e94a940298801ff7f7123074049b"
+      },
+      {
+        "path": "data/brouwer/srgtab551-600.html",
+        "gitBlobSha": "b66a121d703010017cfe482c0ad8920a3a818e24"
+      },
+      {
+        "path": "data/brouwer/srgtab601-650.html",
+        "gitBlobSha": "f10f0d88d282fab19cd7b4dc542b1a9dba860fe2"
+      },
+      {
+        "path": "data/brouwer/srgtab651-700.html",
+        "gitBlobSha": "5a9b0da90003cad69fc6b0c8de8fa99bee9181dc"
+      },
+      {
+        "path": "data/brouwer/srgtab701-750.html",
+        "gitBlobSha": "c6fcf36f8bd580c01ae1bf67e015b25e0197bf60"
+      },
+      {
+        "path": "data/brouwer/srgtab751-800.html",
+        "gitBlobSha": "b66a7df92b919b60268073b6f2be1f5444741eaa"
+      },
+      {
+        "path": "data/brouwer/srgtab801-850.html",
+        "gitBlobSha": "d824f23cd7239fa43e463d6b7eec11dc5e507d62"
+      },
+      {
+        "path": "data/brouwer/srgtab851-900.html",
+        "gitBlobSha": "0f35347f8e7bce24ccf60c453e33f15d210aed24"
+      },
+      {
+        "path": "data/brouwer/srgtab901-950.html",
+        "gitBlobSha": "d468c17e02a6584e2d0482c2757307477c00de5a"
+      },
+      {
+        "path": "data/brouwer/srgtab951-1000.html",
+        "gitBlobSha": "e130665aef6f8a7b327c9420ec15d35e48ed3393"
+      }
+    ]
+  },
+  "manuscriptsModified": false,
+  "sourceGitHistoryImported": false
+}

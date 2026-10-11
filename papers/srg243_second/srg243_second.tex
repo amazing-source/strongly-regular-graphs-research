@@ -1,0 +1,198 @@
+\documentclass[11pt]{amsart}
+\usepackage{amssymb,amsmath,booktabs}
+\usepackage[hidelinks]{hyperref}
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{lemma}[theorem]{Lemma}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+\title{A second strongly regular graph with parameters $(243,22,1,2)$}
+\author{Dilan Djematene}
+\date{\today}
+
+\setlength{\emergencystretch}{2em}
+\begin{document}
+\begin{abstract}
+We construct a strongly regular graph with parameters $(243,22,1,2)$ that is not isomorphic to the
+Berlekamp--van Lint--Seidel graph. This answers the uniqueness question for these parameters negatively. The new graph
+has an automorphism group of order $4320$ with orbits of sizes $3,60,180$, and it contains $405$ induced $3\times3$
+grids, against $1485$ for the Berlekamp--van Lint--Seidel graph.
+
+It is obtained by replacing the subgraph induced on the $180$ vertices at distance~$2$ from a triangle by the second
+solution of the linear equations that this subgraph must satisfy. Unlike the two previously known graphs with
+$\lambda=1$, $\mu=2$, the new graph violates Makhnev's grid condition. Consequently it is a counterexample to
+Reimbayev's conjecture on the number of hexagons in strongly regular graphs with $\lambda=1$, $\mu=2$: it has
+$5\,000\,130$ induced hexagons, against the conjectured $4\,980\,690$.
+\end{abstract}
+\maketitle
+
+\section{Introduction}
+A strongly regular graph with $\lambda=1$ and $\mu=2$ has $v=1+k^2/2$. Integrality of the eigenvalue multiplicities
+leaves only $k\in\{4,14,22,112,994\}$, that is $v\in\{9,99,243,6273,494019\}$. For $v=9$ the graph is the $3\times3$
+grid. For $v=99$, existence is Conway's well-known problem. For $v=243$ the only known example was the coset graph of
+the ternary Golay code, constructed by Berlekamp, van Lint and Seidel~\cite{BvLS} (\emph{BvLS} below). Its uniqueness is
+listed as open in~\cite{BvM,Btab,Zaw}; it is known only among rank~$3$ graphs, abelian Cayley graphs and translation
+graphs~\cite{BvM}.
+
+\begin{theorem}\label{thm:main}
+There is a strongly regular graph $\Gamma'$ with parameters $(243,22,1,2)$ that is not isomorphic to BvLS.
+Its automorphism group has order $4320$, with vertex orbits of sizes $3$, $60$ and $180$.
+\end{theorem}
+
+The graph is given explicitly in the ancillary files, in graph6 format (\texttt{srg243\_new.g6}) and as an
+edge list (\texttt{srg243\_new.edges}). A self-contained verifier in pure Python (\texttt{verify\_srg243.py}) checks $22$-regularity and the values $\lambda=1$,
+$\mu=2$ on all $29\,403$ pairs of vertices.
+
+\section{The construction}
+Let $\Gamma$ be an $\mathrm{srg}(v,k,1,2)$ and $T=\{x,y,z\}$ a triangle. Every vertex outside $T$ is adjacent to at most
+one vertex of $T$, by $\lambda=1$. Let $C$ be the $3(k-2)$ vertices adjacent to $T$, and let $F$ be the remaining
+\emph{far} vertices. A far vertex $w$ is at distance $2$ from each vertex of $T$, so it has exactly two neighbours in each
+of $N(x)\setminus T$, $N(y)\setminus T$ and $N(z)\setminus T$, hence $6$ neighbours in $C$ and $k-6$ in $F$.
+
+Counting common neighbours of $u\in C$ and $w\in F$ gives the linear equations
+\begin{equation}\label{eq:rows}
+\#\{w'\in N_F(w): w'\sim u\}=(2-A_{uw})-|N_C(u)\cap N_C(w)|\qquad(u\in C).
+\end{equation}
+In each far vertex $w$, these equations constrain the set $N_F(w)$ of far neighbours of $w$, given the adjacencies
+between $C$ and $F$.
+
+\begin{lemma}\label{lem:two}
+Let $\Gamma$ be BvLS and $T$ any triangle. Then $|C|=60$ and $|F|=180$, and for every far vertex $w$ the system
+\eqref{eq:rows}, together with $|N_F(w)|=16$ and $w\notin N_F(w)$, has exactly two solutions: the true far neighbourhood
+of $w$, and a second one that differs from it in $8$ of its $16$ elements.
+\end{lemma}
+
+The lemma is a finite computation: for each of the $180$ rows we enumerated all solutions of~\eqref{eq:rows}
+exhaustively with an exact integer constraint solver (OR-Tools CP-SAT). BvLS is arc-transitive, so all triangles are equivalent.
+
+Write $F'$ for the relation in which each far vertex is joined to its \emph{second} solution. The relation $F'$ is
+symmetric, and changing to it removes $720$ edges inside $F$ and adds $720$ others. Let $\Gamma'$ be the graph obtained
+from BvLS by replacing the subgraph induced on $F$ by $F'$; all adjacencies involving $T\cup C$ are kept.
+
+\begin{proof}[Proof of Theorem~\ref{thm:main}]
+\emph{$\Gamma'$ is an $\mathrm{srg}(243,22,1,2)$.} Regularity is clear, since every row of $F'$ has $16$ elements.
+For a pair $\{u,w\}$ with $u\in C$ and $w\in F$, the number of common neighbours is preserved by
+\eqref{eq:rows}. For the other pairs meeting $T\cup C$, every edge from the pair to a common neighbour has an end in
+$T\cup C$, so these counts are unchanged. For the
+pairs inside $F$ the values $\lambda=1$, $\mu=2$ are checked by direct computation. The ancillary verifier checks
+all $29\,403$ pairs.
+
+\emph{$\Gamma'$ is not isomorphic to BvLS.} For a vertex $p$, let $g(p)$ be the number of induced $3\times3$ grids
+($K_3\times K_3$) through $p$; this is an isomorphism invariant. In BvLS, $g\equiv55$ (there are $1485$ grids). In
+$\Gamma'$, $g$ takes the values $55$, $19$, $13$ on $3$, $60$, $180$ vertices respectively, for a total of $405$
+grids. The verifier computes these numbers.
+
+\emph{Automorphisms.} nauty~\cite{nauty} gives $|\mathrm{Aut}\,\Gamma'|=4320$ with orbits of sizes $3,60,180$, namely
+$T$, $C$ and $F$; and $|\mathrm{Aut}\,\mathrm{BvLS}|=3\,849\,120=3^5\cdot2\cdot|M_{11}|$, as expected.
+\end{proof}
+
+\section{Twisting, and Reimbayev's conjecture}
+Call the triangles of a graph with $\lambda=1$ its \emph{lines}. Makhnev~\cite{Mak} considers the condition
+\begin{quote}
+$(*)$\quad two disjoint lines joined by at least two edges are joined by exactly three edges.
+\end{quote}
+For $\mu=2$, $(*)$ is equivalent to: every two intersecting lines lie in a $3\times3$ grid. Makhnev proved that no
+$\mathrm{srg}(99,14,1,2)$ satisfies $(*)$. Both previously known graphs of the family satisfy it.
+
+\begin{proposition}\label{prop:twist}
+In $\Gamma'$, exactly $19\,440$ pairs of disjoint lines are joined by exactly two edges. Hence $\Gamma'$ violates $(*)$.
+Moreover $\Gamma'$ has $2430$ pairs of lines joined by three edges (prisms), against $8910$ in BvLS.
+\end{proposition}
+
+Reimbayev~\cite{Rei} proved that an $\mathrm{srg}(n,k,1,2)$ has at least
+\[
+H_0=\tfrac1{12}\,n\,k\,(k-2)\,(2k^2-21k+53)
+\]
+induced hexagons, with equality exactly when $(*)$ holds (his quantity $n_3$ vanishes). He conjectured that every strongly
+regular graph with $\lambda=1$, $\mu=2$ attains this bound~\cite[\S4]{Rei}.
+
+\begin{corollary}\label{cor:rei}
+Reimbayev's conjecture is false. For $n=243$, $k=22$ we have $H_0=4\,980\,690$; BvLS has exactly $H_0$ induced hexagons,
+while $\Gamma'$ has $5\,000\,130=H_0+19\,440$.
+\end{corollary}
+The hexagon counts were obtained by direct enumeration (ancillary program \texttt{hexagons.c}). The program was checked
+against brute force on random graphs and on the $3\times3$ grid, which has $6=H_0$ induced hexagons.
+
+\begin{remark}
+In the language of~\cite{Mak}, $\Gamma'$ is the first known \emph{twisted} member of the family. Its twisting is concentrated away from the original triangle: the three vertices of $T$ have $g=55=\binom{11}{2}$, so every two lines through each of them lie in a grid.
+\end{remark}
+
+\section{Switching classes}
+Applying the same construction to every triangle of $\Gamma'$ gives Table~\ref{tab:types}. The triangles are classified
+by the multiset of the values $g$ of their vertices.
+
+\begin{table}[ht]
+\centering
+\caption{The far-graph switching on the triangles of $\Gamma'$ (one triangle of each type).}
+\label{tab:types}
+\begin{tabular}{lrl}
+\toprule
+type & number & solutions of \eqref{eq:rows} that give a strongly regular graph\\
+\midrule
+$(55,55,55)$ & 1 & $\Gamma'$ and BvLS\\
+$(19,19,55)$ & 30 & $\Gamma'$ only\\
+$(19,19,19)$ & 20 & $\Gamma'$ only\\
+$(13,13,19)$ & 540 & $\Gamma'$ only\\
+$(13,13,13)$ & 300 & $\Gamma'$ only\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+So the class of BvLS under this switching, applied to one triangle at a time, is exactly $\{\mathrm{BvLS},\Gamma'\}$.
+
+The construction is not a Godsil--McKay switching. In fact, for the relevant parameters, no Godsil--McKay switching is
+possible at all.
+
+\begin{proposition}\label{prop:gm}
+Let $\Gamma$ be an $\mathrm{srg}(v,k,1,2)$ with $k\in\{14,22,112,994\}$. Then $\Gamma$ has no Godsil--McKay switching set
+other than $\emptyset$ and $V$.
+\end{proposition}
+\begin{proof}
+Let $C$ be a switching set: $|C|=2n$, $C$ induces a $d$-regular graph, and every vertex outside $C$ has $0$, $n$ or $2n$
+neighbours in $C$. For $n=1$ the switching is a relabelling, so assume $n\ge2$. Fix $a\in C$. Each of its $k-d$ outside
+neighbours has at least $n-1$ neighbours in $C\setminus\{a\}$. A vertex $x\in C\setminus\{a\}$ has at most $1$ common
+neighbour with $a$ if $x\sim a$, and at most $2$ otherwise. Counting pairs therefore gives
+\[
+(k-d)(n-1)\le d+2(2n-1-d),\qquad\text{that is}\qquad (k-4)n-(k-2)\le d(n-2).
+\]
+For $n=2$ this gives $k\le6$, a contradiction. For $n\ge3$ it gives $d\ge k-3$, so at most $6n$ edges leave $C$. Since
+$\Gamma$ is $k$-regular with second largest eigenvalue $r$ (namely $r=3,4,10,31$ for $k=14,22,112,994$), the
+number of edges leaving $C$ is at least $(k-r)\,2n\,(v-2n)/v$. Hence $2n\ge v\,(1-3/(k-r))$, which gives $n\ge36$, $102$, $3045$ and an even larger value for
+$k=14$, $22$, $112$ and $994$ respectively. In every case $n>k$. Then no outside vertex can have $n$ or $2n$ neighbours in
+$C$, so no edge leaves $C$. Since $\Gamma$ is connected, $C=V$.
+\end{proof}
+
+\begin{remark}[Data and reproducibility]
+Ancillary files:
+\begin{itemize}
+\item the new graph (\texttt{srg243\_new.g6} and \texttt{.edges});
+\item BvLS (\texttt{bvls243.edges});
+\item the verifier \texttt{verify\_srg243.py} (regularity, $\lambda$, $\mu$, grids);
+\item \texttt{hexagons.c}.
+\end{itemize}
+The automorphism groups were computed with nauty.
+\end{remark}
+
+\section*{Acknowledgements}
+This work was carried out with the assistance of Claude (Anthropic), an AI system, which was used for derivations, computations, independent checks of the arguments and the preparation of the manuscript. The author has verified the results and takes full responsibility for the content.
+
+\begin{thebibliography}{9}
+\bibitem{BvLS} E.~R.~Berlekamp, J.~H.~van Lint and J.~J.~Seidel, A strongly regular graph derived from the perfect
+ternary Golay code, in: J.~N.~Srivastava (ed.), \emph{A Survey of Combinatorial Theory}, North-Holland, Amsterdam,
+1973, pp.~25--30.
+\bibitem{Btab} A.~E.~Brouwer, \emph{Parameters of strongly regular graphs}, online tables,
+\url{https://aeb.win.tue.nl/graphs/srg/srgtab.html} (accessed October 2026).
+\bibitem{BvM} A.~E.~Brouwer and H.~Van Maldeghem, \emph{Strongly Regular Graphs}, Encyclopedia of Mathematics and its
+Applications 182, Cambridge University Press, Cambridge, 2022.
+\bibitem{Mak} A.~A.~Makhnev, On strongly regular graphs with $\lambda=1$, \emph{Mat. Zametki} \textbf{44} (1988),
+667--672; English transl.\ \emph{Math. Notes} \textbf{44} (1988), 847--850.
+\bibitem{nauty} B.~D.~McKay and A.~Piperno, Practical graph isomorphism, II, \emph{J. Symbolic Comput.}
+\textbf{60} (2014), 94--112.
+\bibitem{Rei} R.~Reimbayev, The lower bound for number of hexagons in strongly regular graphs with parameters
+$\lambda=1$ and $\mu=2$, preprint, arXiv:2409.10620 (2024).
+\bibitem{Zaw} S.~S.~Zaw, On strictly Deza graphs derived from the Berlekamp--van Lint--Seidel graph, preprint,
+arXiv:1907.02800 (2020).
+\end{thebibliography}
+\end{document}

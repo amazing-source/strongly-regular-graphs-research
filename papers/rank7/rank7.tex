@@ -1,0 +1,279 @@
+\documentclass[11pt]{amsart}
+\usepackage{amssymb,amsmath}
+\usepackage[hidelinks]{hyperref}
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\F}{\mathbb{F}}
+\DeclareMathOperator{\rk}{rank}
+\setlength{\emergencystretch}{2em}
+
+\title[The $7$-rank of a putative $\mathrm{srg}(99,14,1,2)$]{On the $7$-rank of a putative strongly regular graph with parameters $(99,14,1,2)$}
+\author{Dilan Djematene}
+\date{\today}
+
+\begin{document}
+\begin{abstract}
+Let $A$ be the adjacency matrix of a hypothetical strongly regular graph with parameters $(99,14,1,2)$, the
+object of Conway's $99$-graph problem. The only interesting prime for the $p$-ranks of $A$ is $7$, and the known
+bound is $\rk_7(A-3I)\le 45$. We prove that $\rk_7(A-3I)$ is odd and that
+\[
+23\le\rk_7(A-3I)\le 43 .
+\]
+The upper bound comes from the genus of the integral eigenvalue lattice $\Z^{99}\cap\ker(A+4I)$, through the oddity
+formula. The lower bound comes from an exact local formula: the $7$-rank is $15$ plus the $7$-rank of an explicit
+$84\times84$ matrix built from the second neighbourhood of any vertex. A small exact computation raises the lower bound
+to $25$.
+\end{abstract}
+\maketitle
+
+\section{Introduction}
+A strongly regular graph $\Gamma$ with parameters $(99,14,1,2)$ has spectrum $14^1$, $3^{54}$, $(-4)^{44}$. Its
+adjacency matrix satisfies
+\begin{equation}\label{eq:quad}
+A^2+A-12I=2J,\qquad\text{that is}\qquad (A-3I)(A+4I)=2J .
+\end{equation}
+Whether such a graph exists is one of Conway's \$1000 problems~\cite{Con}. The $p$-ranks of $A-\theta I$ are classical
+invariants of strongly regular graphs~\cite{BvE}. For primes $p$ not dividing $r-s=7$ these ranks are determined by the parameters
+(see~\cite{BvE}), so $p=7$ is the only interesting prime here. Brouwer and van Eijl~\cite{BvE} prove
+$\rk_p(A-rI)\le\min(f,g)+1$, which gives $\rk_7(A-3I)\le 45$. We write
+\[
+k_7:=\rk_7(A-3I)-15 .
+\]
+
+\begin{theorem}\label{thm:main}
+If $\Gamma$ exists, then $k_7$ is even and $8\le k_7\le 28$, that is
+\[
+\rk_7(A-3I)\in\{23,25,\dots,43\}.
+\]
+Moreover $k_7=\rk_7(M_x)$ for every vertex $x$, where $M_x$ is the $84\times84$ matrix of Proposition~\ref{prop:local}.
+\end{theorem}
+
+The upper bound and the parity are proved in Section~\ref{sec:genus}. The local formula and the lower bound are proved in
+Sections~\ref{sec:local} and~\ref{sec:lower}. Remark~\ref{rem:25} explains how a small exhaustive computation excludes
+$k_7=8$ as well.
+
+\section{The genus of the eigenvalue lattice}\label{sec:genus}
+Let $\Lambda=\Z^{99}\cap\ker(A+4I)$. It is a primitive sublattice of $\Z^{99}$ of rank $44$. The orthogonal projection
+onto $\ker(A+4I)$ is
+\[
+E=\frac{27I-9A+J}{63}.
+\]
+We use two standard facts.
+\begin{enumerate}
+\item[(F1)] For a primitive sublattice $L\subseteq\Z^n$, the orthogonal projection of $\Z^n$ onto $L\otimes\Q$ is the
+dual lattice $L^\#$.
+\item[(F2)] A primitive sublattice $L$ of a unimodular lattice and its orthogonal complement have isomorphic discriminant
+groups~\cite[Prop.~1.6.1]{Nik}.
+\end{enumerate}
+
+\begin{lemma}\label{lem:disc}
+$\Lambda$ is even, and $\Lambda^\#/\Lambda\cong\Z/9\oplus(\Z/7)^{\alpha}$ with $\alpha=\rk_7(A-3I)-1=14+k_7$. In
+particular $\det\Lambda=9\cdot7^\alpha$.
+\end{lemma}
+\begin{proof}
+\emph{Evenness.} Every $u\in\Lambda$ is orthogonal to $\mathbf 1$, so $u\cdot u\equiv\sum u_i=0\pmod2$.
+
+\emph{Exponent.} Since $63E$ is integral, (F1) gives $63\Lambda^\#=63E(\Z^{99})\subseteq\Lambda$. So the discriminant
+group is killed by $63$, and $\Lambda$ is unimodular at every prime other than $3$ and $7$.
+
+\emph{The $3$-part.} By (F2) it equals the $3$-part of the discriminant group of
+$\Lambda'=\Z^{99}\cap(\Q\mathbf 1\oplus\ker(A-3I))$. Write $u\in\Lambda'$ as $u=c\mathbf 1+w$ with $(A-3I)w=0$. Then
+$(A-3I)u=11c\mathbf 1$ is integral, so $11c\in\Z$, and $\Lambda'$ contains $\Z\mathbf 1\oplus\Lambda_3$ with index
+dividing $11$, where $\Lambda_3=\Z^{99}\cap\ker(A-3I)$. The projection onto $\ker(A-3I)$ is $(44I+11A-2J)/77$. As
+above, $77\Lambda_3^\#\subseteq\Lambda_3$, so $\Lambda_3$ is unimodular at $3$. Hence the $3$-part of the discriminant
+group of $\Lambda'$ is that of $\Z\mathbf 1$, namely $\Z/9$.
+
+\emph{The $7$-part.} Let $W=\Z^{99}\cap\mathbf 1^\perp$. On $W$ we have $J=0$, hence $A-3I=-7E$ by the formula for $E$.
+Since $[\Z^{99}:W\oplus\Z\mathbf 1]=99$ is prime to $7$, we get $\Z_7^{99}=W_7\oplus\Z_7\mathbf 1$ (subscripts denote
+$\otimes\Z_7$), and $(A-3I)(W_7)=7E(\Z_7^{99})=7\Lambda^\#_7$. Reducing modulo $7$, the image of $A-3I$ is spanned by
+$7\Lambda^\#_7$, which is $\Lambda^\#_7/\Lambda_7$ in $\F_7^{99}$, together with $(A-3I)\mathbf 1=11\cdot\mathbf 1$.
+Moreover $\mathbf 1$ is not in the reduction of $7\Lambda^\#_7$, because $\mathbf 1\cdot\mathbf 1=99\not\equiv0$ while
+$7\Lambda^\#_7\perp\mathbf 1$. Hence $\rk_7(A-3I)=\dim_{\F_7}(\Lambda^\#/\Lambda)_7+1$. The $7$-part has exponent $7$,
+so it is $(\Z/7)^\alpha$ with $\alpha=\rk_7(A-3I)-1$.
+\end{proof}
+
+\begin{theorem}\label{thm:genus}
+$\alpha$ is even and $\alpha\le42$; equivalently $k_7$ is even and $k_7\le28$. More precisely, write
+$\Lambda\otimes\Z_7=U\perp 7V$ with $U,V$ unimodular over $\Z_7$, of ranks $30-k_7$ and $14+k_7$. Then $U\ne0$, and
+$U\otimes\F_7$ is not a hyperbolic quadratic space.
+\end{theorem}
+\begin{proof}
+We use the oddity formula of Conway and Sloane~\cite[Ch.~15, \S7]{CS}. For a lattice of signature $\sigma$,
+\[
+\sigma+\sum_{p\ \mathrm{odd}}p\text{-excess}\equiv\text{oddity}\pmod8 .
+\]
+For an odd prime $p$, a Jordan constituent of scale $q=p^j$, dimension $n$ and sign $\varepsilon$ contributes
+$n(q-1)+4[\,q\text{ is not a square and }\varepsilon=-1\,]$ to the $p$-excess.
+
+Here $\sigma=44$. Since $\Lambda$ is even of odd determinant, it is unimodular and even at $2$, and its oddity is $0$. By
+Lemma~\ref{lem:disc} the $3$-adic constituents are a unimodular one and $9^{\pm1}$; the latter contributes
+$1\cdot(9-1)=8\equiv0$ whatever its sign, as $9$ is a square. The $7$-adic constituents are $U$ and $7V$, with $\dim V=\alpha$;
+the constituent $7V$ contributes $6\alpha+4\delta$, where $\delta=1$ if $\big(\tfrac{\det V}{7}\big)=-1$ and $\delta=0$
+otherwise. The oddity formula therefore reads
+\[
+44+6\alpha+4\delta\equiv0\pmod8 .
+\]
+Hence $\alpha$ is even; write $\alpha=14+2m$, so that $k_7=2m$. Then $44+84+12m+4\delta\equiv4(m+\delta)\pmod 8$, and so
+$\delta\equiv m\pmod2$.
+
+Since $\det\Lambda=9\cdot7^\alpha$, we have $\big(\tfrac{\det U}{7}\big)\big(\tfrac{\det V}{7}\big)=\big(\tfrac{9}{7}\big)=1$.
+
+Suppose first that $U=0$, that is $k_7=30$ and $m=15$. Then $\big(\tfrac{\det V}{7}\big)=1$, so $\delta=0$, contradicting
+$\delta\equiv m=15$. Thus $U\ne0$ and $k_7\le28$.
+
+In general, $\big(\tfrac{\det U}{7}\big)=\big(\tfrac{\det V}{7}\big)=(-1)^{m}$. A quadratic space of even dimension $2t=30-k_7$
+over $\F_7$ is hyperbolic if and only if its determinant is $(-1)^t$ modulo squares. Here $t=15-m$ and
+$\big(\tfrac{-1}{7}\big)=-1$, so hyperbolicity would require $(-1)^m=(-1)^{15-m}$, which never holds.
+\end{proof}
+
+\begin{remark}
+The same computation applied to graphs that exist is consistent. For the Petersen graph ($r-s=3$), the lattice
+$\Z^{10}\cap\ker(A+2I)$ is entirely $3$-divisible in the sense above ($U=0$). This is allowed there, because the unit part
+of its determinant, $5$, is a non-square modulo $3$. For $(99,14,1,2)$ the unit part $9$ is a square modulo $7$, and this is
+what forbids $U=0$.
+\end{remark}
+
+\section{An exact local formula}\label{sec:local}
+Fix a vertex $x$. Its neighbourhood consists of $7$ disjoint edges, the \emph{mate pairs}. We write $\bar a$ for the
+mate of $a\in N(x)$. Since $\mu=2$, every vertex at distance $2$ from $x$ is adjacent to exactly two vertices of $N(x)$.
+These two vertices are not mates, by $\lambda=1$, and every non-mate pair occurs exactly once. So the $84$ vertices at
+distance $2$ are labelled by the $84$ non-mate pairs $\{a,b\}\subset N(x)$.
+
+Let $H$ be the adjacency matrix of the second neighbourhood, indexed by these pairs. For two pairs $y,z$ let
+$s(y,z)=|y\cap z|$, and let $p(y,z)$ be the number of $(i,j)\in y\times z$ with $j=\bar i$.
+
+\begin{proposition}\label{prop:local}
+Let $M_x=H+4I+3S+P'+5J$ over $\F_7$, where $S=(s(y,z))$ and $P'=(p(y,z))$. Then
+\[
+\rk_7(A-3I)=15+\rk_7(M_x).
+\]
+In particular $\rk_7(M_x)=k_7$ does not depend on $x$.
+\end{proposition}
+\begin{proof}
+Order the vertices as $\{x\}\cup N(x)$ followed by the second neighbourhood. Then
+$A-3I=\begin{pmatrix}F-3I&B\\ B^{T}&H-3I\end{pmatrix}$, where $F$ is the adjacency matrix of the closed neighbourhood
+(a windmill), and the column of $B$ at $y=\{a,b\}$ is $e_a+e_b$. A direct computation gives
+$\det(F-3I)=2^{23}$, so $F-3I$ is invertible over $\F_7$. Moreover the block of $(F-3I)^{-1}$ on $N(x)$ is
+\[
+G=-\tfrac38I-\tfrac18P+\tfrac1{16}J ,
+\]
+where $P$ is the mate involution. To check this, note that the rows of $F-3I$ on $N(x)$ are $(1,\,P-3I)$, and multiply
+out using $P^2=I$, $PJ=J$.
+
+So $\rk_7(A-3I)=15+\rk_7(H-3I-B^{T}GB)$. Now $(B^TGB)_{yz}=\sum_{i\in y,\,j\in z}G_{ij}$. Modulo $7$ we have
+$-\tfrac38\equiv4$, $-\tfrac18\equiv6$ and $\tfrac1{16}\equiv4$. Since $|y|=|z|=2$, this gives
+$(B^TGB)_{yz}\equiv4s+6p+4\cdot4=4s+6p+2$. Hence
+\[
+H-3I-B^TGB\equiv H-3I+3S+P'+5J\equiv M_x \pmod 7 .\qedhere
+\]
+\end{proof}
+
+\section{Lower bounds from stars}\label{sec:lower}
+For $a\in N(x)$, the \emph{star} of $a$ is the set of the $12$ pairs $\{a,b\}$ with $b\notin\{a,\bar a\}$. Two pairs
+$\{a,b\}$ and $\{a,c\}$ are adjacent if and only if they are matched by the perfect matching $\tau_a$ on the $12$ elements
+$b$ defined by the triangles through $a$ (the edge $a\{a,b\}$ lies in a unique triangle). The six mate pairs $\{b,\bar b\}$
+($b\ne a,\bar a$) are called \emph{classes}.
+
+The \emph{class graph} of $\tau_a$ is the $2$-regular multigraph on the six classes with one edge
+$\{\mathrm{class}(b),\mathrm{class}(\tau_a b)\}$ for each pair of $\tau_a$. A loop arises when $\tau_a(b)=\bar b$. Let
+$e(\tau_a)$ be the number of cycles of even length in the class graph; a double edge is a cycle of length $2$, and loops
+are not counted. Clearly $e(\tau_a)\le3$.
+
+\begin{lemma}\label{lem:star}
+The principal submatrix of $M_x$ on the star of $a$ has $7$-rank $11-2e(\tau_a)$.
+\end{lemma}
+\begin{proof}
+On the star, $S=I+J$, and $H+P'=:N$ is the adjacency matrix of the union of the two perfect matchings $\tau_a$ and
+$b\mapsto\bar b$. So the block is $N+7I+8J\equiv N+J$.
+
+The union of two perfect matchings is a disjoint union of alternating cycles. A loop of the class graph gives a double
+edge $\left(\begin{smallmatrix}0&2\\2&0\end{smallmatrix}\right)$, which is invertible modulo $7$. A cycle of length $m\ge2$
+of the class graph gives one alternating cycle of length $2m$. Over $\F_7$, a vector in the kernel of the adjacency matrix
+of the cycle $C_{2m}$ satisfies $v_{i+2}=-v_i$. Such vectors exist (forming a space of dimension $2$) exactly when
+$4\mid 2m$, that is when $m$ is even, and then they have sum $0$. Hence $\dim\ker_7N=2e(\tau_a)$.
+
+Finally $N\mathbf 1=2\cdot\mathbf 1$, so $(N+J)\mathbf 1=14\cdot\mathbf 1\equiv0$. If $(N+J)v=0$, then
+$w=v+\tfrac12(\sum v)\mathbf 1$ lies in $\ker N$. Hence $\ker_7(N+J)=\ker_7N\oplus\F_7\mathbf 1$ has dimension
+$2e(\tau_a)+1$, and the rank is $12-2e(\tau_a)-1$.
+\end{proof}
+
+\begin{corollary}\label{cor:6}
+$k_7\ge 11-2e(\tau_a)$ for every vertex $x$ and every $a\in N(x)$. In particular $k_7\ge6$.
+\end{corollary}
+\begin{proof}
+A principal submatrix has rank at most $\rk_7(M_x)=k_7$. Then use $e\le3$ and the parity of $k_7$
+(Theorem~\ref{thm:genus}).
+\end{proof}
+
+\begin{proposition}\label{prop:8}
+$k_7\ne6$. Hence $k_7\ge8$ and $\rk_7(A-3I)\ge23$.
+\end{proposition}
+\begin{proof}
+Suppose $k_7=6$. By Corollary~\ref{cor:6} every star block has rank at most $6$, hence rank exactly $5$, and
+$e(\tau_a)=3$: the class graph of every $\tau_a$ consists of three double edges.
+
+Since $M_x$ is symmetric of rank $6$ over $\F_7$, we can write $M_x=V^{T}QV$ with $V$ of size $6\times84$ and $Q$
+invertible. Let $V_a$ be the columns of $V$ indexed by the star of $a$, and $U_a$ their span. Since
+$\rk(V_a^TQV_a)=5$, we have $\dim U_a\in\{5,6\}$. If $\dim U_a=6$, then $V_a^TQV_a$ would have rank $6$. Hence
+$\dim U_a=5$ and $Q|_{U_a}$ is nondegenerate. Consequently every vector $c$ in the kernel of the star block satisfies
+$V_ac=0$, that is,
+\[
+\sum_{y}c_y\,(M_x)_{y,\cdot}=0\quad\text{on all $84$ columns.}
+\]
+
+Take a double edge of the class graph: classes $\{\ell_1,\ell_4\}$ and $\{\ell_2,\ell_3\}$ with
+$\tau_a(\ell_1)=\ell_2$, $\tau_a(\ell_3)=\ell_4$, $\bar\ell_2=\ell_3$ and $\bar\ell_4=\ell_1$. In the proof of
+Lemma~\ref{lem:star}, the columns $\ell_1$ and $\ell_3$ of $N$ are both $e_{\ell_2}+e_{\ell_4}$. So
+$c=e_{\ell_1}-e_{\ell_3}$ is in the kernel of the star block, and the rows of $M_x$ at $y=\{a,\ell_1\}$ and
+$y'=\{a,\ell_3\}$ coincide.
+
+Choose $q\in N(x)\setminus\{a,\bar a,\ell_1,\bar\ell_1,\ell_3\}$ (nine choices) and let $z=\{\ell_1,q\}$. By the definition
+of $M_x$,
+\[
+(M_x)_{yz}=H_{yz}+3+5,\qquad (M_x)_{y'z}=H_{y'z}+[\,q=\ell_2\,]+5 .
+\]
+Here we used $s(y,z)=1$, $p(y,z)=0$ (as $q\ne\bar a$ and $\bar\ell_1\notin z$), $s(y',z)=0$, and
+$p(y',z)=[q=\bar\ell_3]=[q=\ell_2]$. Equality modulo $7$ gives $H_{yz}-H_{y'z}\equiv[\,q=\ell_2\,]-3\in\{4,5\}\pmod 7$,
+which is impossible since $H_{yz},H_{y'z}\in\{0,1\}$.
+\end{proof}
+
+\begin{remark}[$k_7\ne8$]\label{rem:25}
+The argument of Proposition~\ref{prop:8} extends. If $k_7=K$, the kernel vectors of a star block that are relations
+between complete rows of $M_x$ form a space $R_a$ of dimension at least $12-K$. Each column $z$ outside the star imposes
+a linear condition on $R_a$, and this condition depends only on the two (unknown) neighbours of $z$ in the star, so it
+ranges over a small finite set. For $K=8$ an exhaustive computation over $\F_7$ shows:
+\begin{itemize}
+\item for two of the three admissible star types, no subspace of the required dimension meets all the constraint sets;
+\item for the third type, exactly $32$ subspaces remain. Adding the degree and labelling constraints of the second
+neighbourhood, each of the $32$ resulting Boolean instances is refuted by unit propagation alone.
+\end{itemize}
+Hence $k_7\ge10$, that is $\rk_7(A-3I)\ge25$. We regard this as computer-assisted, although the computation is tiny. For
+$K=10$ the one-star method no longer excludes all types.
+\end{remark}
+
+\begin{remark}
+A proof that $\rk_7(A-3I)\le 21$, that is $k_7\le6$, would therefore prove that no $\mathrm{srg}(99,14,1,2)$ exists.
+\end{remark}
+
+\section*{Acknowledgements}
+This work was carried out with the assistance of Claude (Anthropic), an AI system, which was used for derivations,
+computations, independent checks of the arguments and the preparation of the manuscript. The author has verified the
+results and takes full responsibility for the content.
+
+\begin{thebibliography}{9}
+\bibitem{BvE} A.~E.~Brouwer and C.~A.~van Eijl, On the $p$-rank of the adjacency matrices of strongly regular graphs,
+\emph{J. Algebraic Combin.} \textbf{1} (1992), 329--346.
+\bibitem{Con} J.~H.~Conway, Five \$1{,}000 problems (update 2017), \emph{The On-Line Encyclopedia of Integer Sequences},
+\url{https://oeis.org/A248380/a248380.pdf}.
+\bibitem{CS} J.~H.~Conway and N.~J.~A.~Sloane, \emph{Sphere Packings, Lattices and Groups}, 3rd ed., Grundlehren der
+mathematischen Wissenschaften 290, Springer, New York, 1999.
+\bibitem{Nik} V.~V.~Nikulin, Integral symmetric bilinear forms and some of their applications,
+\emph{Math. USSR Izv.} \textbf{14} (1980), 103--167.
+\end{thebibliography}
+\end{document}

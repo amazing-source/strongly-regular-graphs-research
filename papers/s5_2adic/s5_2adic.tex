@@ -1,0 +1,206 @@
+\documentclass[11pt]{amsart}
+\usepackage{amssymb,amsmath,booktabs}
+\usepackage[hidelinks]{hyperref}
+\newtheorem{theorem}{Theorem}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{lemma}[theorem]{Lemma}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\DeclareMathOperator{\disc}{disc}
+
+\title{A $2$-adic nonexistence condition for strongly regular graphs}
+\author{Dilan Djematene}
+\date{\today}
+
+\setlength{\emergencystretch}{2em}
+\begin{document}
+\begin{abstract}
+For a strongly regular graph with integral eigenvalues $k>r>s$ such that $r-s$ is odd, we show that the integral
+eigenvalue lattices $\Lambda_\theta=\Z^v\cap\ker(A-\theta I)$ are even lattices of odd determinant under a mild
+$2$-adic hypothesis, and we determine the prime-to-$(r-s)$ part of their determinants. Since an even lattice of odd
+determinant and rank $m$ has determinant $\equiv(-1)^{m/2}\pmod 4$, this yields a simple arithmetic feasibility
+condition. It rules out $35$ parameter sets with $v\le 1300$ that are listed as open in Brouwer's table of strongly
+regular graphs, the infinite family of negative Latin square type parameters $\mathrm{NL}_e(n)$ with $e$ odd and all
+prime divisors of $n$ congruent to $1$ modulo $4$, and the partial geometry $\mathrm{pg}(14,14,4)$. It also gives a
+five-line proof of the nonexistence of $\mathrm{srg}(289,54,1,12)$, due to Bondarenko and Radchenko.
+\end{abstract}
+\maketitle
+
+\section{Introduction}
+A strongly regular graph $\mathrm{srg}(v,k,\lambda,\mu)$ must satisfy a number of classical feasibility conditions:
+integrality of the eigenvalue multiplicities, the Krein conditions, the absolute bound, and several more specialised
+conditions collected in~\cite{BvM}. Brouwer's online table~\cite{Btab} records, for every feasible parameter set with
+$v\le 1300$, whether a graph is known to exist, is known not to exist, or is open.
+
+In this note we prove a condition that comes from the arithmetic of the \emph{integral} eigenvalue lattices of the
+adjacency matrix. Its proof only uses standard facts about even lattices over the $2$-adic integers and about
+discriminant groups. Nevertheless, it decides $35$ open entries of the table (Table~\ref{tab:open}) and an infinite
+family (Corollary~\ref{cor:NL}).
+
+\section{Setting and statement}
+Let $\Gamma$ be an $\mathrm{srg}(v,k,\lambda,\mu)$ with adjacency matrix $A$ and integral eigenvalues $k>r>s$, of
+multiplicities $1,f,g$. Put $d=r-s$. For $\theta\in\{r,s\}$ let $\theta'$ be the other one, $m_\theta$ the
+multiplicity of $\theta$, $V_\theta=\ker(A-\theta I)\subseteq\Q^v$, and
+\[
+\Lambda_\theta=\Z^v\cap V_\theta ,
+\]
+a primitive sublattice of the standard lattice $\Z^v$ of rank $m_\theta$. For a prime $q$ we write $v_q$ for the
+$q$-adic valuation. The orthogonal projection onto $V_\theta$ is
+\begin{equation}\label{eq:E}
+E_\theta=\frac{A-\theta' I}{\theta-\theta'}-\frac{k-\theta'}{(\theta-\theta')\,v}\,J .
+\end{equation}
+
+\begin{theorem}\label{thm:main}
+Let $\theta\in\{r,s\}$ and assume that $d$ is odd and $v_2(k-\theta')\ge v_2(v)$ (automatic when $v$ is odd). Then:
+\begin{enumerate}
+\item[(a)] $\Lambda_\theta$ is an even lattice of odd determinant. Consequently $m_\theta$ is even and
+\[(-1)^{m_\theta/2}\det\Lambda_\theta\equiv 1\pmod 4 .\]
+\item[(b)] For every prime $q\nmid d$ we have $v_q(\det\Lambda_\theta)=v_q(v)$ if $v_q(k-\theta')<v_q(v)$, and
+$v_q(\det\Lambda_\theta)=0$ otherwise.
+\end{enumerate}
+In particular $\det\Lambda_\theta=\prod_{q\mid d}q^{c_q}\cdot P_\theta$ for some integers $c_q\ge0$, where
+\[
+P_\theta=\prod_{\substack{q\mid v,\ q\nmid d\\ v_q(k-\theta')<v_q(v)}}q^{v_q(v)} .
+\]
+\end{theorem}
+
+\begin{corollary}\label{cor:mod4}
+Under the hypotheses of Theorem~\ref{thm:main}, if every prime divisor of $d$ is congruent to $1$ modulo $4$, then
+\[
+(-1)^{m_\theta/2}\,P_\theta\equiv 1\pmod 4 .
+\]
+If this congruence fails for some $\theta$, there is no $\mathrm{srg}(v,k,\lambda,\mu)$.
+\end{corollary}
+
+\begin{proof}
+By Theorem~\ref{thm:main}, $\det\Lambda_\theta=\prod_{q\mid d}q^{c_q}P_\theta$, and the first factor is $\equiv1\pmod 4$.
+\end{proof}
+
+\section{Proof of Theorem~\ref{thm:main}}
+We use three standard facts.
+\begin{enumerate}
+\item[(F1)] If $L$ is a primitive sublattice of $\Z^v$, the orthogonal projection of $\Z^v$ onto $L\otimes\Q$ is
+the dual lattice $L^\#$. Indeed, it lies in $L^\#$, and every integral linear form on $L$ extends to $\Z^v$ because
+$L$ is primitive, and is then given by an element of the unimodular lattice $\Z^v$.
+\item[(F2)] If $L$ is primitive in a unimodular lattice, then $L$ and $L^\perp$ have isomorphic discriminant groups
+(\cite[Prop.~1.6.1]{Nik}). Both groups are isomorphic to $M/(L\oplus L^\perp)$, where $M$ is the unimodular lattice.
+\item[(F3)] Let $L$ be an even lattice over $\Z_2$ whose Gram determinant is a unit. Then $L$ has even rank $m$ and its determinant is $\equiv(-1)^{m/2}\pmod 4$. Indeed, the bilinear form is nondegenerate modulo $2$ and alternating there (as $L$ is even), so there are $x,y\in L$ with $(x,y)$ odd. The Gram matrix of $\Z_2x+\Z_2y$ is $\begin{pmatrix}2a&b\\ b&2c\end{pmatrix}$ with $b$ odd. Its determinant $4ac-b^2\equiv-1\pmod 4$ is a unit, so this plane splits off orthogonally, and induction gives the claim (compare \cite[Ch.~15]{CS}). A change of $\Z_2$-basis multiplies the determinant by a square unit, which is $\equiv1\pmod8$, so the congruence holds in any basis.
+\end{enumerate}
+
+\emph{Evenness.} Since $\theta\ne k$, $V_\theta\perp\mathbf 1$, so every $x\in\Lambda_\theta$ has
+$\sum x_i=0$. Hence $x\cdot x=\sum x_i^2\equiv\sum x_i\equiv0\pmod 2$.
+
+\emph{Odd determinant.} The first term of \eqref{eq:E} has denominator $\pm d$, which is odd. The second is $2$-integral
+because $v_2(k-\theta')\ge v_2(v)$. So $E_\theta$ has $2$-integral entries. By (F1),
+$\Lambda_\theta^\#\otimes\Z_2=E_\theta(\Z_2^v)\subseteq \Z_2^v\cap V_\theta=\Lambda_\theta\otimes\Z_2$, so
+$\Lambda_\theta$ is unimodular at $2$, that is, $\det\Lambda_\theta$ is odd. Part~(a) now follows from (F3), applied to $\Lambda_\theta\otimes\Z_2$ in a $\Z$-basis of $\Lambda_\theta$.
+
+\emph{Part (b).} Let $q\nmid d$. If $v_q(k-\theta')\ge v_q(v)$, then $E_\theta$ is $q$-integral, and the argument above
+with $q$ in place of $2$ shows $q\nmid\det\Lambda_\theta$. Assume now $v_q(k-\theta')<v_q(v)$, so $q\mid v$. Let
+$W=\Z^v\cap\mathbf 1^\perp$. By (F2), $\disc W\cong\disc(\Z\mathbf 1)\cong\Z/v$ is cyclic. On $W$ the matrix $J$
+vanishes, so $E_\theta|_W=(A-\theta'I)/(\theta-\theta')$ is $q$-integral. Since $\Lambda_\theta,\Lambda_{\theta'}\subseteq W$
+are primitive, we get an orthogonal decomposition
+\[
+W\otimes\Z_q=(\Lambda_\theta\otimes\Z_q)\perp(\Lambda_{\theta'}\otimes\Z_q),
+\]
+and therefore the cyclic group $(\Z/v)\otimes\Z_q\cong\Z/q^{v_q(v)}$ is the direct sum of the $q$-parts of
+$\disc\Lambda_\theta$ and $\disc\Lambda_{\theta'}$. A cyclic $q$-group is not a direct sum of two nontrivial groups, so
+one of these $q$-parts is trivial and the other is $\Z/q^{v_q(v)}$.
+
+It remains to see which one is trivial. From $(k-r)(k-s)=\mu v$ and $(k-s)-(k-r)=d$ with $q\nmid d$, the prime $q$ divides
+exactly one of $k-r$, $k-s$, and that factor has valuation $v_q(\mu v)\ge v_q(v)$. By assumption it is not $k-\theta'$, so
+$v_q(k-\theta)\ge v_q(v)$. Then $E_{\theta'}$ is $q$-integral and $\Lambda_{\theta'}$ is $q$-unimodular. Hence
+$v_q(\det\Lambda_\theta)=v_q(v)$. \qed
+
+\section{Consequences}
+\begin{corollary}[Negative Latin square type]\label{cor:NL}
+Let $n$ be an integer all of whose prime divisors are $\equiv1\pmod4$, and let $e$ be odd. Then there is no
+strongly regular graph with the parameters
+\[
+\mathrm{NL}_e(n)=\mathrm{srg}\big(n^2,\ e(n+1),\ -n+e^2+3e,\ e^2+e\big).
+\]
+\end{corollary}
+\begin{proof}
+The eigenvalues are $r=e$ and $s=e-n$, so $d=n$. Since $v=n^2$ is odd, every prime of $v$ divides $d$, and
+$P_s=1$. The multiplicity of $s$ is $m_s=e(n+1)$ (from $\operatorname{tr}A=0$). As $e$ is odd and $n\equiv1\pmod 4$,
+$m_s\equiv2\pmod4$, so $(-1)^{m_s/2}P_s=-1$, contradicting Corollary~\ref{cor:mod4}.
+\end{proof}
+
+For example, $\mathrm{NL}_3(17)=\mathrm{srg}(289,54,1,12)$, whose nonexistence was proved by Bondarenko and
+Radchenko~\cite{BR} by other means. The table contains open members of this family for
+$n\in\{13,17,25,29\}$, see Table~\ref{tab:open}. At $v=625$, the table records graphs with the parameters $\mathrm{NL}_e(25)$ for $e=4,6,8,10,12$, while
+$e=5,7,9,11$ were open; this matches Corollary~\ref{cor:NL}.
+
+\begin{corollary}\label{cor:pg}
+There is no partial geometry $\mathrm{pg}(14,14,4)$.
+\end{corollary}
+\begin{proof}
+Its point graph would be an $\mathrm{srg}(750,210,55,60)$, with eigenvalues $r=10$, $s=-15$, $d=25$ and $m_s=308$.
+Take $\theta=s$: $k-r=200$, so $v_2(k-r)=3\ge v_2(750)=1$. The primes of $750=2\cdot3\cdot5^3$ not dividing $d$ are $2$
+and $3$. We have $v_2(200)\ge v_2(750)$ and $v_3(200)=0<1$, so $P_s=3$. Then $(-1)^{154}\cdot3=3\not\equiv1\pmod4$.
+\end{proof}
+
+\begin{table}[ht]
+\centering\small
+\caption{Parameter sets with $v\le 1300$ marked open (``?'') in Brouwer's table (snapshot of September 2026) that are
+excluded by Corollary~\ref{cor:mod4}. The column $\theta$ gives the eigenvalue used, with its multiplicity $m$ and $P_\theta$.}
+\label{tab:open}
+\begin{tabular}{lrrr@{\qquad}lrrr}
+\toprule
+$(v,k,\lambda,\mu)$ & $\theta$ & $m$ & $P_\theta$ & $(v,k,\lambda,\mu)$ & $\theta$ & $m$ & $P_\theta$\\
+\midrule
+(169,42,5,12) & $3$ & 126 & 1 & (630,68,1,8) & $5$ & 440 & 63\\
+(169,70,27,30) & $5$ & 98 & 1 & (690,318,121,168) & $3$ & 644 & 15\\
+(209,52,15,12) & $8$ & 76 & 11 & (721,220,69,66) & $14$ & 308 & 103\\
+(235,52,9,12) & $5$ & 140 & 47 & (750,210,55,60) & $-15$ & 308 & 3\\
+(289,90,23,30) & $5$ & 198 & 1 & (750,214,63,60) & $-11$ & 428 & 3\\
+(289,126,53,56) & $7$ & 162 & 1 & (780,369,158,189) & $-36$ & 104 & 15\\
+(375,154,53,70) & $4$ & 308 & 3 & (841,150,11,30) & $5$ & 690 & 1\\
+(375,170,85,70) & $20$ & 68 & 3 & (841,210,41,56) & $7$ & 630 & 1\\
+(391,140,39,56) & $4$ & 322 & 17 & (841,270,79,90) & $9$ & 570 & 1\\
+(430,39,8,3) & $-4$ & 300 & 43 & (841,330,125,132) & $11$ & 510 & 1\\
+(441,190,89,76) & $19$ & 98 & 9 & (841,390,179,182) & $13$ & 450 & 1\\
+(494,85,12,15) & $-10$ & 208 & 19 & (871,348,137,140) & $13$ & 468 & 67\\
+(507,44,1,4) & $5$ & 308 & 3 & (875,184,33,40) & $9$ & 552 & 7\\
+(616,205,90,57) & $-4$ & 560 & 11 & (931,180,29,36) & $9$ & 588 & 19\\
+(625,130,15,30) & $5$ & 494 & 1 & (1026,451,212,187) & $-8$ & 836 & 27\\
+(625,182,45,56) & $7$ & 442 & 1 & (1148,481,210,195) & $26$ & 328 & 7\\
+(625,234,83,90) & $9$ & 390 & 1 & (1248,203,22,35) & $8$ & 896 & 39\\
+(625,286,129,132) & $11$ & 338 & 1 &  & & &\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\section{Verification and remarks}
+\begin{remark}[Consistency with known graphs]
+The condition was implemented twice, independently; one implementation is the accompanying file
+\texttt{verify\_s5.py}. Both were applied to all $4538$ rows of Brouwer's table with $v\le1300$, complements included. No parameter set
+for which a graph is known is excluded. Among the parameter sets known not to exist, the condition recovers
+$(289,54,1,12)$~\cite{BR} and $(154,51,8,21)$, which the table excludes by the Krein condition.
+\end{remark}
+
+\begin{remark}[Scope]
+When $d$ has a prime divisor $q\equiv3\pmod4$, the exponent $c_q$ is not controlled. Theorem~\ref{thm:main} then only
+gives the parity of $m_\theta$, which in practice is already forced by integrality. This is the case of Conway's
+$99$-graph problem, $\mathrm{srg}(99,14,1,2)$, where $d=7$. The hypothesis $v_2(k-\theta')\ge v_2(v)$ cannot be dropped
+when $v$ is even. For the Petersen graph, $\Lambda_1$ has determinant $162$.
+\end{remark}
+
+\section*{Acknowledgements}
+This work was carried out with the assistance of Claude (Anthropic), an AI system, which was used for derivations, computations, independent checks of the arguments and the preparation of the manuscript. The author has verified the results and takes full responsibility for the content.
+
+\begin{thebibliography}{9}
+\bibitem{BR} A.~V.~Bondarenko and D.~V.~Radchenko, On a family of strongly regular graphs with $\lambda=1$,
+\emph{J. Combin. Theory Ser. B} \textbf{103} (2013), 521--531.
+\bibitem{Btab} A.~E.~Brouwer, \emph{Parameters of strongly regular graphs}, online tables,
+\url{https://aeb.win.tue.nl/graphs/srg/srgtab.html} (accessed September 2026).
+\bibitem{BvM} A.~E.~Brouwer and H.~Van Maldeghem, \emph{Strongly Regular Graphs}, Encyclopedia of Mathematics and its
+Applications 182, Cambridge University Press, Cambridge, 2022.
+\bibitem{CS} J.~H.~Conway and N.~J.~A.~Sloane, \emph{Sphere Packings, Lattices and Groups}, 3rd ed., Grundlehren der
+mathematischen Wissenschaften 290, Springer, New York, 1999.
+\bibitem{Nik} V.~V.~Nikulin, Integral symmetric bilinear forms and some of their applications,
+\emph{Math. USSR Izv.} \textbf{14} (1980), 103--167.
+\end{thebibliography}
+\end{document}

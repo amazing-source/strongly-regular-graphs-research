@@ -1,0 +1,12 @@
+{
+  "title": "Strongly regular graphs: the automorphism group of a Conway 99-graph, new graphs with parameters (243,22,1,2), and a 2-adic feasibility condition",
+  "upload_type": "publication",
+  "publication_type": "preprint",
+  "creators": [
+    {"name": "Djematene, Dilan"}
+  ],
+  "description": "<p>Research manuscripts on strongly regular graphs, with LaTeX sources, PDFs, graph data and verification programs. <strong>Status: awaiting independent review.</strong></p><ul><li><em>A Conway 99-graph, if it exists, is asymmetric: statement and dependencies</em>, a note assembling the exclusion of automorphisms of every prime order.</li><li><em>A strongly regular graph with parameters (99,14,1,2) has no automorphism of order two</em> (computer-assisted).</li><li><em>Le graphe de Conway srg(99,14,1,2) n'a pas d'automorphisme d'ordre 3</em> (by hand; formalised in Lean 4).</li><li><em>A computer-free proof that a Conway 99-graph has no automorphism of order seven</em> (formalised in Lean 4).</li><li><em>A second strongly regular graph with parameters (243,22,1,2)</em>, and two further graphs with these parameters (automorphism groups of order 864 and 3,888), with a standalone verifier.</li><li><em>A 2-adic nonexistence condition for strongly regular graphs</em>.</li><li><em>On the 7-rank of a putative strongly regular graph with parameters (99,14,1,2)</em>.</li></ul><p>The work was carried out with the assistance of AI systems, as declared in each manuscript; the author directed it and takes full responsibility for its content. Programs, certificates and Lean formalisations not included here are available from the author on request.</p>",
+  "keywords": ["strongly regular graphs", "Conway 99-graph", "srg(99,14,1,2)", "srg(243,22,1,2)", "automorphism groups", "Berlekamp-van Lint-Seidel graph", "integral lattices", "algebraic graph theory"],
+  "license": "cc-by-4.0",
+  "notes": "Copies of A. E. Brouwer's parameter tables in data/brouwer/ are third-party reference data included only for reproducibility; they are not covered by this record's license."
+}

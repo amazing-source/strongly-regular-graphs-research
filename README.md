@@ -176,6 +176,12 @@ Additional material is limited to reproducibility dependencies:
 
 The mathematical content of the papers has not been changed. Their existing acknowledgements of assistance from Claude (Anthropic) are retained. For the four Conway 99-graph documents, the only changes from the author's private originals are: the author line (AI assistance is declared in a dedicated section of each text instead), links to private repositories replaced by "available on request", and, for the order-3 text, a font package so that it compiles with pdfLaTeX. Computational checks support the stated finite results; the general lattice arguments, switching rigidity proof, and claims of novelty remain subject to independent mathematical review. Corrections and reproducible review findings are welcome through GitHub issues.
 
+## License and citation
+
+The author's material is licensed under [CC BY 4.0](LICENSE.md). The exception is the third-party snapshot in
+`data/brouwer/`. Each release of this repository is archived on Zenodo with a permanent DOI. Please cite the Zenodo
+record of the release you used.
+
 ## Author and contact
 
 I pursue this research independently. I would be very

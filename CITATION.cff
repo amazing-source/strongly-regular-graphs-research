@@ -1,0 +1,20 @@
+cff-version: 1.2.0
+message: "If you use this work, please cite the Zenodo record."
+title: "Strongly regular graphs: the automorphism group of a Conway 99-graph, new graphs with parameters (243,22,1,2), and a 2-adic feasibility condition"
+type: dataset
+authors:
+  - family-names: Djematene
+    given-names: Dilan
+    orcid: "https://orcid.org/0009-0009-2947-7746"
+version: v1.0
+date-released: 2026-10-11
+doi: 10.5281/zenodo.23305123
+license: CC-BY-4.0
+repository-code: "https://github.com/amazing-source/strongly-regular-graphs-research"
+identifiers:
+  - type: doi
+    value: 10.5281/zenodo.23305122
+    description: "Concept DOI (all versions)"
+  - type: doi
+    value: 10.5281/zenodo.23305123
+    description: "Version v1.0"

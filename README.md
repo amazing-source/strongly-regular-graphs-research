@@ -14,8 +14,8 @@ The manuscripts below exclude the remaining cases. Together they give: **a Conwa
 
 | Document | Claim | Method | Status | Files |
 | --- | --- | --- | --- | --- |
-| *A Conway 99-graph, if it exists, is asymmetric: statement and dependencies* | `Aut(Γ)` is trivial, assembled prime by prime from the results below and the literature | short note, no new mathematics | assembled result; awaiting independent review; see the C2 version note below | [PDF](papers/conway99_asymmetric/asymmetric.pdf) · [LaTeX](papers/conway99_asymmetric/asymmetric.tex) |
-| *A strongly regular graph with parameters (99,14,1,2) has no automorphism of order two* | no involution | first half by hand (an involution gives a 51-vector frame in one of Borcherds' 156 odd unimodular lattices of rank 24); second half computer-assisted, lattice by lattice | computer-assisted proof; the author reports the transfer check completed in the 11 October 2026 status update; not refereed | [PDF](papers/conway99_order2/order2.pdf) · [LaTeX](papers/conway99_order2/order2.tex) |
+| *A Conway 99-graph, if it exists, is asymmetric: statement and dependencies* | `Aut(Γ)` is trivial, assembled prime by prime from the results below and the literature | short note, no new mathematics | assembled result; awaiting independent review; see the C2 note below | [PDF](papers/conway99_asymmetric/asymmetric.pdf) · [LaTeX](papers/conway99_asymmetric/asymmetric.tex) |
+| *A strongly regular graph with parameters (99,14,1,2) has no automorphism of order two* | no involution | first half by hand (an involution gives a 51-vector frame in one of Borcherds' 156 odd unimodular lattices of rank 24); second half computer-assisted, lattice by lattice | computer-assisted proof; one validation step (exact recertification of the pairs closed by the first and third forms of the transfer rule) not carried out, see the C2 note below; not refereed | [PDF](papers/conway99_order2/order2.pdf) · [LaTeX](papers/conway99_order2/order2.tex) |
 | *Le graphe de Conway srg(99,14,1,2) n'a pas d'automorphisme d'ordre 3* (in French) | no automorphism of order 3 | by hand: discriminants of eigenvector lattices over ℤ and the Eisenstein integers | **formalised in Lean 4 / Mathlib** (no `sorry`, standard axioms, `lake comparator`); not refereed | [PDF](papers/conway99_order3/preuve_c3.pdf) · [LaTeX](papers/conway99_order3/preuve_c3.tex) |
 | *A computer-free proof that a Conway 99-graph has no automorphism of order seven* | no automorphism of order 7 (previously known only by computer, Behbahani–Lam) | by hand, completing the framework of Cesarz–Woldar | **formalised in Lean 4 / Mathlib**; not refereed | [PDF](papers/conway99_order7/order7.pdf) · [LaTeX](papers/conway99_order7/order7.tex) |
 
@@ -23,11 +23,14 @@ The programs, records and certificates of the order-2 computation (including a 9
 computer-assisted lemmas), and the Lean formalisations of orders 3 and 7, are kept in private repositories and are
 available from the author on request.
 
-**C2 version note (11 October 2026).** The author confirms that the transfer-pair check has been completed.
-The supplied order-2 manuscript and combined note retain their earlier version wording about pending validation;
-their mathematical text and PDFs have been preserved unchanged. Reviewers should request the latest check records
-alongside these manuscripts. This README records the author's updated status, rather than a new independent audit
-of that computation.
+**C2 note (corrected 19 November 2026).** A note dated 11 October 2026 stated here that the transfer-pair check had
+been completed. That was an error: the check has not been carried out, and no records of it exist. The state is the
+one given in the order-2 manuscript (Section 9 and the concluding remarks): the exact recertification of the pairs
+closed by the first and third forms of the transfer rule (4,163,099 pairs, of which at most 2,479,669 are not covered
+by the corollary on roots of product ±2) remains the open computational item. The transfer rule itself is proved in
+the manuscript; the recertification addresses its implementation (recognition of the twin's root system through
+floating-point ranks, and statuses recorded during the campaign). The version archived on Zenodo on 11 October 2026
+contains the earlier wording.
 
 ## Further results on (243,22,1,2) (October 2026)
 
